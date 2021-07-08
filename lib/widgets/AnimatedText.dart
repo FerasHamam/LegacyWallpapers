@@ -18,15 +18,21 @@ class _AnimatedTextState extends State<AnimatedText>
     _animController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
     final curve =
-        CurvedAnimation(parent: _animController, curve: Curves.linear);
+        CurvedAnimation(parent: _animController, curve: Curves.easeInExpo);
 
     _animOffset =
-        Tween<Offset>(begin: Offset(0, -1), end: Offset.zero).animate(curve);
+        Tween<Offset>(begin: Offset(0, -0.1), end: Offset.zero).animate(curve);
     _animOpacity = Tween<double>(
       begin: 0,
       end: 0.8,
     ).animate(curve);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animController.dispose();
+    super.dispose();
   }
 
   @override

@@ -34,8 +34,8 @@ class _CompanyContainerState extends State<CompanyContainer>
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
     return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
-      curve: Curves.bounceInOut,
+      duration: Duration(milliseconds: 200),
+      curve: Curves.fastOutSlowIn,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -44,12 +44,6 @@ class _CompanyContainerState extends State<CompanyContainer>
         ),
       ),
       child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('L E G A C Y'),
-          backgroundColor: Colors.transparent,
-          actions: [],
-        ),
         backgroundColor: Colors.transparent,
         body: Consumer<Companies>(
           builder: (ctx, companies, child) {
@@ -59,7 +53,7 @@ class _CompanyContainerState extends State<CompanyContainer>
                   setState(() {
                     pickedColors = [
                       companies.companies[index].companyColor,
-                      Colors.indigo,
+                      Colors.cyan,
                     ];
                     _animController.forward();
                   });
@@ -70,6 +64,19 @@ class _CompanyContainerState extends State<CompanyContainer>
                   final item = companies.companies[index];
                   return Column(
                     children: [
+                      SizedBox(
+                        height: MediaQuery.of(context).viewPadding.top * 1.2,
+                      ),
+                      Container(
+                          alignment: Alignment.center,
+                          child: const Text(
+                            'L E G A C Y',
+                            style: TextStyle(fontSize: 25),
+                          )),
+                      Divider(
+                        color: Colors.white,
+                        thickness: 2,
+                      ),
                       SizedBox(
                         height: deviceSize.height * 0.1,
                       ),
