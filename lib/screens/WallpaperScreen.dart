@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class WallpaperScreen extends StatefulWidget {
   static const String name = 'WallpapersScreen';
+  // String companyName;
+  // WallpaperScreen(this.companyName)
 
   @override
   _WallpaperScreenState createState() => _WallpaperScreenState();
@@ -16,6 +18,10 @@ class _WallpaperScreenState extends State<WallpaperScreen> {
           SliverAppBar(
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
+                child: Image.asset(
+                  'lib/assets/images/Nokia.jpg',
+                  fit: BoxFit.fill,
+                ),
                 color: Colors.transparent,
               ),
               centerTitle: true,
@@ -29,56 +35,7 @@ class _WallpaperScreenState extends State<WallpaperScreen> {
             expandedHeight: 160,
           ),
           SliverGrid(
-              delegate: SliverChildListDelegate([
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.amber,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.amber,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.amber,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.amber,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.amber,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.amber,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.amber,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.amber,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.amber,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.amber,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.amber,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.amber,
-                )
-              ]),
+              delegate: SliverChildListDelegate([]),
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                   mainAxisSpacing: 25,
                   maxCrossAxisExtent: 200,
