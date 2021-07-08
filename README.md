@@ -1,3 +1,3 @@
 # legacywallpapers
 
-A new Flutter project.
+new Flutter project.
