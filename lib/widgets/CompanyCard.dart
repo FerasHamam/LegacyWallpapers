@@ -29,7 +29,7 @@ class _CompanyCardState extends State<CompanyCard> {
               blurRadius: 4,
               spreadRadius: 4,
               color: Colors.black12,
-              offset: Offset(0, 0),
+              offset: const Offset(0, 0),
             ),
           ],
         ),

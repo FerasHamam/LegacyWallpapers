@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'providers/wallpapers.dart';
 import 'providers/companies.dart';
 //screens
-import 'screens/CompanyScreen.dart';
+import 'screens/InitialScreen.dart';
 import 'screens/WallpaperScreen.dart';
 
 void main() {
@@ -37,9 +37,9 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: CompanyScreen(),
+        home: InitialScreen(),
         routes: {
-          CompanyScreen.name: (ctx) => CompanyScreen(),
+          InitialScreen.name: (ctx) => InitialScreen(),
           WallpaperScreen.name: (ctx) => WallpaperScreen(),
         },
       ),
