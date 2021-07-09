@@ -1,13 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:legacywallpapers/screens/Initial.dart';
 
 //providers
 import 'package:provider/provider.dart';
 import 'providers/wallpapers.dart';
 import 'providers/companies.dart';
 //screens
-import 'screens/InitialScreen.dart';
-import 'screens/WallpaperScreen.dart';
+import 'screens/Initial.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,27 +21,24 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: Wallpapers()),
-        ChangeNotifierProvider.value(value: Companies())
+        ChangeNotifierProvider.value(value: Companies()),
       ],
       builder: (ctx, _) => MaterialApp(
         title: 'LEGACY WALLPAPERS',
         theme: ThemeData(
-          primarySwatch: Colors.cyan,
-          accentColor: Colors.blueGrey,
+          primarySwatch: Colors.purple,
+          accentColor: Colors.indigo,
           textTheme: TextTheme(
             bodyText2: TextStyle(fontFamily: 'RobotoSlab', color: Colors.white),
           ),
           appBarTheme: AppBarTheme(
             textTheme: TextTheme(
-              headline6: TextStyle(fontFamily: 'RobotoSlab', fontSize: 20),
+              headline6: TextStyle(fontFamily: 'RobotoSlab', fontSize: 32),
             ),
           ),
         ),
-        home: InitialScreen(),
-        routes: {
-          InitialScreen.name: (ctx) => InitialScreen(),
-          WallpaperScreen.name: (ctx) => WallpaperScreen(),
-        },
+        home: Initial(),
+        routes: {},
       ),
     );
   }
