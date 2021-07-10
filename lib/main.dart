@@ -33,7 +33,10 @@ class MyApp extends StatelessWidget {
           ),
           appBarTheme: AppBarTheme(
             textTheme: TextTheme(
-              headline6: TextStyle(fontFamily: 'RobotoSlab', fontSize: 32),
+              headline6: TextStyle(
+                  fontFamily: 'RobotoSlab',
+                  fontSize: 24,
+                  color: Color(0xeeffffff)),
             ),
           ),
         ),

@@ -26,10 +26,10 @@ class CompanyCard extends StatelessWidget {
           ],
         ),
         margin: EdgeInsets.only(
-          top: deviceSize.height * 0.05,
+          top: deviceSize.height * 0.04,
           right: deviceSize.width * 0.12,
           left: deviceSize.width * 0.12,
-          bottom: deviceSize.height * 0.05,
+          bottom: deviceSize.height * 0.02,
         ),
       ),
     );

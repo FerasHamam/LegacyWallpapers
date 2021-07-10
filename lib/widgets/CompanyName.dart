@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnimatedText extends StatefulWidget {
-  String text;
+  final String text;
   AnimatedText(this.text);
 
   @override
@@ -21,12 +21,12 @@ class _AnimatedTextState extends State<AnimatedText>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 200),
+      duration: Duration(milliseconds: 100),
     );
-    _animOpacity = Tween<double>(begin: 0, end: 0.8).animate(
+    _animOpacity = Tween<double>(begin: 0, end: 0.9).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOutCirc),
     );
-    _animPosition = Tween<Offset>(begin: Offset(0, -0.05), end: Offset.zero)
+    _animPosition = Tween<Offset>(begin: Offset(0, -0.1), end: Offset.zero)
         .animate(
             CurvedAnimation(parent: _controller, curve: Curves.easeInOutCirc));
     super.initState();
@@ -38,6 +38,7 @@ class _AnimatedTextState extends State<AnimatedText>
     super.dispose();
   }
 
+  @override
   void didUpdateWidget(AnimatedText oldWidget) {
     if (oldWidget.text != widget.text) {
       _controller.reset();

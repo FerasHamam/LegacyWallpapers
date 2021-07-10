@@ -6,7 +6,6 @@ import '../items/company.dart';
 import '../providers/companies.dart';
 //widgets
 import 'CompanyCard.dart';
-import 'CompanyName.dart';
 
 class CompanyPageView extends StatelessWidget {
   //function to build cards
@@ -23,7 +22,6 @@ class CompanyPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //initial values
-    Size deviceSize = MediaQuery.of(context).size;
     final PageController _controller = PageController();
     final companies = Provider.of<Companies>(context, listen: false).companies;
     //
