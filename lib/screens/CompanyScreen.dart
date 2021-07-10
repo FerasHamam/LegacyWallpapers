@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 //providers
 //widgets
 import '../widgets/CompanyPageView.dart';
-import '../widgets/CompanyName.dart';
 
 class CompanyScreen extends StatelessWidget {
   @override
@@ -12,15 +11,7 @@ class CompanyScreen extends StatelessWidget {
       body: Container(
         height: deviceSize.height,
         color: Colors.amber,
-        child: Column(children: [
-          SizedBox(
-            height: MediaQuery.of(context).viewPadding.top * 5,
-          ),
-          CompanyName(),
-          Flexible(
-            child: CompanyPageView(),
-          ),
-        ]),
+        child: CompanyPageView(),
       ),
     );
   }

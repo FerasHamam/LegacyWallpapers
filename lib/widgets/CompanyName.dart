@@ -1,44 +1,74 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-//providers
-import '../providers/companies.dart';
 
-class CompanyName extends StatelessWidget {
-  // late AnimationController _animationController;
-  // late Animation<double> _animOpacity;
-  // late Animation<Offset> _animPosition;
+class AnimatedText extends StatefulWidget {
+  String text;
+  AnimatedText(this.text);
 
   @override
-  // void initState() {
-  //   _animationController = AnimationController(
-  //     vsync: this,
-  //     duration: Duration(milliseconds: 800),
-  //   );
-  //   _animOpacity = Tween<double>(begin: 0, end: 0.8).animate(
-  //     CurvedAnimation(parent: _animationController, curve: Curves.linear),
-  //   );
-  //   _animPosition = Tween<Offset>(begin: Offset(0, -0.2), end: Offset.zero)
-  //       .animate(CurvedAnimation(
-  //           parent: _animationController, curve: Curves.linear));
-  //   super.initState();
-  // }
+  _AnimatedTextState createState() => _AnimatedTextState();
+}
 
-  // @override
-  // void dispose() {
-  //   _animationController.dispose();
-  //   super.dispose();
-  // }
+class _AnimatedTextState extends State<AnimatedText>
+    with TickerProviderStateMixin {
+  String name = 'Samsung';
+  late AnimationController _controller;
+
+  late Animation<double> _animOpacity;
+
+  late Animation<Offset> _animPosition;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 200),
+    );
+    _animOpacity = Tween<double>(begin: 0, end: 0.8).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOutCirc),
+    );
+    _animPosition = Tween<Offset>(begin: Offset(0, -0.05), end: Offset.zero)
+        .animate(
+            CurvedAnimation(parent: _controller, curve: Curves.easeInOutCirc));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void didUpdateWidget(AnimatedText oldWidget) {
+    if (oldWidget.text != widget.text) {
+      _controller.reset();
+      _controller.forward();
+    } else {
+      _controller.forward();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
-    final index = Provider.of<Companies>(context, listen: false).currentIndex;
-    final name = Provider.of<Companies>(context, listen: false)
-        .companies[index]
-        .companyName;
-    return Text(
-      name,
-      style: TextStyle(fontSize: deviceSize.width * 0.15),
+    Size deviceSize = MediaQuery.of(context).size;
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, _) {
+        return FadeTransition(
+          opacity: _animOpacity,
+          child: SlideTransition(
+            position: _animPosition,
+            child: Text(
+              widget.text,
+              key: GlobalKey(),
+              style: TextStyle(
+                  fontSize: deviceSize.width * 0.15,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        );
+      },
     );
   }
 }
