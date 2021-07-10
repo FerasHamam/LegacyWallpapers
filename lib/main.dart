@@ -1,13 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:legacywallpapers/screens/Initial.dart';
-
 //providers
 import 'package:provider/provider.dart';
 import 'providers/wallpapers.dart';
 import 'providers/companies.dart';
 //screens
 import 'screens/Initial.dart';
+import 'screens/CompanyScreen.dart';
+import 'screens/WallpapersScreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,7 +42,10 @@ class MyApp extends StatelessWidget {
           ),
         ),
         home: Initial(),
-        routes: {},
+        routes: {
+          CompanyScreen.name: (ctx) => CompanyScreen(),
+          WallpapersScreen.name: (ctx) => WallpapersScreen(),
+        },
       ),
     );
   }

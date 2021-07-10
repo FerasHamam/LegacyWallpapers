@@ -29,6 +29,7 @@ class _AnimatedTextState extends State<AnimatedText>
     _animPosition = Tween<Offset>(begin: Offset(0, -0.1), end: Offset.zero)
         .animate(
             CurvedAnimation(parent: _controller, curve: Curves.easeInOutCirc));
+    _controller.forward();
     super.initState();
   }
 
@@ -42,8 +43,6 @@ class _AnimatedTextState extends State<AnimatedText>
   void didUpdateWidget(AnimatedText oldWidget) {
     if (oldWidget.text != widget.text) {
       _controller.reset();
-      _controller.forward();
-    } else {
       _controller.forward();
     }
     super.didUpdateWidget(oldWidget);

@@ -12,8 +12,7 @@ class Initial extends StatelessWidget {
     return FutureBuilder(
         future: Provider.of<Companies>(context, listen: false).fetchAndSet(),
         builder: (ctx, AsyncSnapshot snapShot) =>
-            snapShot.connectionState == ConnectionState.waiting &&
-                    snapShot.data != null
+            snapShot.connectionState == ConnectionState.waiting
                 ? LoadingScreen()
                 : CompanyScreen());
   }

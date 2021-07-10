@@ -11,6 +11,7 @@ import '../widgets/CompanyName.dart';
 import '../widgets/AppbarWidget.dart';
 
 class CompanyScreen extends StatefulWidget {
+  static String name = 'CompanyScreen';
   @override
   _CompanyScreenState createState() => _CompanyScreenState();
 }
