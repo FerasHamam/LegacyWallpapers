@@ -10,7 +10,7 @@ class AnimatedText extends StatefulWidget {
 
 class _AnimatedTextState extends State<AnimatedText>
     with TickerProviderStateMixin {
-  String name = 'Samsung';
+  String name = 'Fantasy';
   late AnimationController _controller;
 
   late Animation<double> _animOpacity;

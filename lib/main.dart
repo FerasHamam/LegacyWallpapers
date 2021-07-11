@@ -1,13 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:legacywallpapers/screens/Initial.dart';
 //providers
 import 'package:provider/provider.dart';
-import 'providers/wallpapers.dart';
-import 'providers/companies.dart';
+import 'providers/types.dart';
 //screens
-import 'screens/Initial.dart';
-import 'screens/CompanyScreen.dart';
+import 'screens/TypesScreen.dart';
 import 'screens/WallpapersScreen.dart';
 
 void main() {
@@ -21,14 +18,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: Wallpapers()),
-        ChangeNotifierProvider.value(value: Companies()),
+        ChangeNotifierProvider.value(value: Types()),
       ],
       builder: (ctx, _) => MaterialApp(
         title: 'LEGACY WALLPAPERS',
         theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.indigo,
+          primarySwatch: Colors.cyan,
+          accentColor: Colors.black,
           textTheme: TextTheme(
             bodyText2: TextStyle(fontFamily: 'RobotoSlab', color: Colors.white),
           ),
@@ -41,9 +37,9 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: Initial(),
+        home: TypesScreen(),
         routes: {
-          CompanyScreen.name: (ctx) => CompanyScreen(),
+          TypesScreen.name: (ctx) => TypesScreen(),
           WallpapersScreen.name: (ctx) => WallpapersScreen(),
         },
       ),

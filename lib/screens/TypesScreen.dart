@@ -2,21 +2,21 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 //providers
-import '../providers/companies.dart';
+import '../providers/types.dart';
 //items
 import '../items/colors.dart';
 //widgets
-import '../widgets/CompanyPageView.dart';
-import '../widgets/CompanyName.dart';
+import '../widgets/TypePageView.dart';
+import '../widgets/TypeName.dart';
 import '../widgets/AppbarWidget.dart';
 
-class CompanyScreen extends StatefulWidget {
-  static String name = 'CompanyScreen';
+class TypesScreen extends StatefulWidget {
+  static String name = 'TypesScreen';
   @override
-  _CompanyScreenState createState() => _CompanyScreenState();
+  _TypesScreenState createState() => _TypesScreenState();
 }
 
-class _CompanyScreenState extends State<CompanyScreen>
+class _TypesScreenState extends State<TypesScreen>
     with TickerProviderStateMixin {
   late AnimationController _controller;
   @override
@@ -29,7 +29,7 @@ class _CompanyScreenState extends State<CompanyScreen>
   }
 
   @override
-  void didUpdateWidget(CompanyScreen oldWidget) {
+  void didUpdateWidget(TypesScreen oldWidget) {
     _controller.forward();
     super.didUpdateWidget(oldWidget);
   }
@@ -44,7 +44,7 @@ class _CompanyScreenState extends State<CompanyScreen>
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: Consumer<Companies>(
+      body: Consumer<Types>(
         builder: (ctx, companies, ch) {
           List<Color> _colorsChosen = [
             pickedColor[companies.currentIndex]['1']!,
@@ -77,11 +77,11 @@ class _CompanyScreenState extends State<CompanyScreen>
             SizedBox(
               height: deviceSize.height * 0.05,
             ),
-            Consumer<Companies>(
-              builder: (ctx, companies, _) {
+            Consumer<Types>(
+              builder: (ctx, types, _) {
                 return Container(
-                    child: AnimatedText(companies
-                        .companies[companies.currentIndex].companyName));
+                    child:
+                        AnimatedText(types.types[types.currentIndex].typeName));
               },
             ),
             Flexible(child: CompanyPageView()),

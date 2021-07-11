@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 //itmes
-import '../items/company.dart';
+import '../items/Type.dart';
 //providers
-import '../providers/companies.dart';
+import '../providers/types.dart';
 //widgets
-import 'CompanyCard.dart';
+import 'TypeCard.dart';
 
 class CompanyPageView extends StatelessWidget {
   //function to build cards
-  List<Widget> companyCardWidget(List<Company> companies) {
+  List<Widget> companyCardWidget(List<Type> types) {
     print('object');
-    return companies
+    return types
         .map(
-          (company) => CompanyCard(company.companyName),
+          (type) => CompanyCard(type.typeName),
         )
         .toList();
   }
@@ -23,16 +23,16 @@ class CompanyPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     //initial values
     final PageController _controller = PageController();
-    final companies = Provider.of<Companies>(context, listen: false).companies;
+    final types = Provider.of<Types>(context, listen: false).types;
     //
 
     return PageView(
       controller: _controller,
       scrollDirection: Axis.horizontal,
-      children: companyCardWidget(companies),
+      children: companyCardWidget(types),
       physics: BouncingScrollPhysics(),
       onPageChanged: (index) {
-        Provider.of<Companies>(context, listen: false).setIndex(index);
+        Provider.of<Types>(context, listen: false).setIndex(index);
       },
     );
   }

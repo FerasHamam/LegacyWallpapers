@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 //provider
-import '../providers/companies.dart';
+import '../providers/types.dart';
+//widgets
+import '../widgets/WallpaperCard.dart';
+import '../widgets/CountingWidget.dart';
 
 class WallpapersScreen extends StatefulWidget {
   static String name = 'WallpapersScreen';
@@ -12,25 +15,55 @@ class WallpapersScreen extends StatefulWidget {
 class _WallpapersScreenState extends State<WallpapersScreen> {
   @override
   Widget build(BuildContext context) {
-    final _index = Provider.of<Companies>(context, listen: false).currentIndex;
-    final String _currentCompanyName =
-        Provider.of<Companies>(context, listen: false)
-            .companies[_index]
-            .companyName;
+    Size deviceSize = MediaQuery.of(context).size;
+    final _index = Provider.of<Types>(context, listen: false).currentIndex;
+    final String _currentTypeName =
+        Provider.of<Types>(context, listen: false).types[_index].typeName;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          _currentTypeName.toUpperCase(),
+          style: TextStyle(color: Colors.black54),
+        ),
+        centerTitle: true,
+        actions: [],
+      ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            title: Text(_currentCompanyName),
+            leading: Container(),
+            floating: true,
             centerTitle: true,
-            flexibleSpace: Hero(
-              tag: 'CompanyImage',
-              child: Image.asset(
-                'lib/assets/images/$_currentCompanyName.jpg',
-                fit: BoxFit.cover,
+            expandedHeight: deviceSize.height * 0.2,
+            flexibleSpace: Container(
+              padding: EdgeInsets.only(
+                  top: deviceSize.height * 0.07,
+                  bottom: deviceSize.height * 0.07,
+                  left: deviceSize.width * 0.3,
+                  right: deviceSize.width * 0.3),
+              child: CountingWidget(),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage('lib/assets/images/$_currentTypeName.jpg'),
+                ),
               ),
             ),
           ),
+          SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                (ctx, index) {
+                  return WallpaperCard();
+                },
+                childCount: 10,
+              ),
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  childAspectRatio: 10 / 20,
+                  mainAxisExtent: deviceSize.height * 0.4,
+                  maxCrossAxisExtent: deviceSize.width * 0.5,
+                  crossAxisSpacing: deviceSize.width * 0.03,
+                  mainAxisSpacing: deviceSize.height * 0.015)),
         ],
       ),
     );

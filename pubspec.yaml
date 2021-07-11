@@ -50,11 +50,11 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/assets/images/Samsung.jpg
-    - lib/assets/images/OnePlus.jpg
+    - lib/assets/images/Fantasy.jpg
     - lib/assets/images/Xiaomi.jpg
     - lib/assets/images/Oppo.jpg
     - lib/assets/images/Realme.jpg
-    - lib/assets/images/Nokia.jpg
+    - lib/assets/images/Minimal.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

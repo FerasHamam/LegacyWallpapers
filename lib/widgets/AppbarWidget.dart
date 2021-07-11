@@ -9,15 +9,23 @@ class AppbarWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          IconButton(
+            icon: Icon(Icons.favorite,
+                color: Color(0xccffffff), size: deviceSize.width * 0.09),
+            onPressed: () {},
+          ),
+          SizedBox(
+            width: deviceSize.width * 0.21,
+          ),
           Text(
             'L E G A C Y',
             style: Theme.of(context).appBarTheme.textTheme!.headline6,
           ),
           SizedBox(
-            width: deviceSize.width * 0.2,
+            width: deviceSize.width * 0.21,
           ),
           IconButton(
-            icon: Icon(Icons.favorite,
+            icon: Icon(Icons.menu,
                 color: Color(0xccffffff), size: deviceSize.width * 0.09),
             onPressed: () {},
           ),
