@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 //itmes
-import '../items/Type.dart';
+import '../../items/Type.dart';
 //providers
-import '../providers/types.dart';
+import '../../providers/types.dart';
 //widgets
 import 'TypeCard.dart';
 

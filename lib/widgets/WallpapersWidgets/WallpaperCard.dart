@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //screens
-import '../screens/ImagePreviewScreen.dart';
+import '../../screens/ImagePreviewScreen.dart';
 
 class WallpaperCard extends StatelessWidget {
   final String url;

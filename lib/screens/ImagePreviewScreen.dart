@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+//widgets
+import '../widgets/ImagePreviewWidgets/AnimiatedAppBar.dart';
+import '../widgets/ImagePreviewWidgets/wallpaperFunctions.dart';
 
 class ImagePreviewScreen extends StatefulWidget {
   static const name = 'imagePreviewScreen';
@@ -10,14 +13,21 @@ class ImagePreviewScreen extends StatefulWidget {
   _ImagePreviewScreenState createState() => _ImagePreviewScreenState();
 }
 
-class _ImagePreviewScreenState extends State<ImagePreviewScreen>
-    with TickerProviderStateMixin {
+class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
   final _transCont = TransformationController();
   bool _showAppBar = true;
+  bool _firstBuild = true;
+  @override
+  void initState() {
+    if (_firstBuild)
+      SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    _firstBuild = false;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
+    final Size deviceSize = MediaQuery.of(context).size;
     final args =
         ModalRoute.of(context)?.settings.arguments as Map<String, String>;
     final url = args["url"];
@@ -33,8 +43,6 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen>
                 setState(
                   () {
                     _showAppBar = true;
-                    SystemChrome.setEnabledSystemUIOverlays(
-                        SystemUiOverlay.values);
                   },
                 );
               } else {
@@ -43,48 +51,26 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen>
                   ..scale(1.2);
                 setState(() {
                   _showAppBar = false;
-                  SystemChrome.setEnabledSystemUIOverlays(
-                      [SystemUiOverlay.bottom]);
                 });
               }
             },
             child: InteractiveViewer(
+              boundaryMargin: EdgeInsets.all(0),
               transformationController: _transCont,
-              constrained: true,
               child: Container(
-                height: double.infinity,
-                width: double.infinity,
+                height: deviceSize.height,
+                width: deviceSize.width,
                 decoration: BoxDecoration(
                   image: DecorationImage(
+                    fit: BoxFit.fill,
                     image: NetworkImage(url!),
                   ),
                 ),
               ),
             ),
           ),
-          AnimatedSize(
-            duration: Duration(milliseconds: 200),
-            vsync: this,
-            curve: Curves.easeInExpo,
-            child: Container(
-              child: Container(
-                alignment: Alignment.bottomLeft,
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: Icon(
-                    Icons.arrow_back_rounded,
-                    size: _showAppBar ? deviceSize.width * 0.08 : 0.0,
-                    color: Colors.white,
-                  ),
-                ),
-                color: Colors.black26,
-                width: _showAppBar ? deviceSize.width : 0.0,
-                height: deviceSize.height * 0.12,
-              ),
-            ),
-          )
+          AnimatedAppBar(_showAppBar),
+          FunctionsWidget(deviceSize, _showAppBar),
         ],
       ),
     );

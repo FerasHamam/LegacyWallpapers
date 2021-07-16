@@ -6,9 +6,9 @@ import '../providers/types.dart';
 //items
 import '../items/colors.dart';
 //widgets
-import '../widgets/TypePageView.dart';
-import '../widgets/TypeName.dart';
-import '../widgets/AppbarWidget.dart';
+import '../widgets/TypeWidgets/TypePageView.dart';
+import '../widgets/TypeWidgets/TypeName.dart';
+import '../widgets/TypeWidgets/AppbarWidget.dart';
 
 class TypesScreen extends StatefulWidget {
   static String name = 'TypesScreen';

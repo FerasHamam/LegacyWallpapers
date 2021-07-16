@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 //provider
 import '../providers/types.dart';
 //widgets
-import '../widgets/WallpaperCard.dart';
-import '../widgets/CountingWidget.dart';
+import '../widgets/WallpapersWidgets/WallpaperCard.dart';
+import '../widgets/WallpapersWidgets/CountingWidgetBorder.dart';
 
 class WallpapersScreen extends StatefulWidget {
   static String name = 'WallpapersScreen';
@@ -27,7 +27,8 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_sharp,
-            size: deviceSize.width * 0.08,
+            size: deviceSize.width * 0.09,
+            color: Colors.black45,
           ),
           onPressed: () {
             Navigator.of(context).pop();
@@ -54,7 +55,7 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
                   bottom: deviceSize.height * 0.07,
                   left: deviceSize.width * 0.3,
                   right: deviceSize.width * 0.3),
-              child: CountingWidget(wallpapers.length),
+              child: CountingWidgetBorder(wallpapers.length),
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,

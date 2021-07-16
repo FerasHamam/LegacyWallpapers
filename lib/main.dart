@@ -32,8 +32,8 @@ class MyApp extends StatelessWidget {
       builder: (ctx, _) => MaterialApp(
         title: 'LEGACY WALLPAPERS',
         theme: ThemeData(
-          primarySwatch: Colors.cyan,
-          accentColor: Colors.black,
+          primarySwatch: Colors.purple,
+          accentColor: Colors.white,
           textTheme: TextTheme(
             bodyText2: TextStyle(fontFamily: 'RobotoSlab', color: Colors.white),
           ),
