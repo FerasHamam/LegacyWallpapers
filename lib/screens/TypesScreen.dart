@@ -84,7 +84,7 @@ class _TypesScreenState extends State<TypesScreen>
                         AnimatedText(types.types[types.currentIndex].typeName));
               },
             ),
-            Flexible(child: CompanyPageView()),
+            Flexible(child: TypePageView()),
           ],
         ),
       ),

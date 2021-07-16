@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:legacywallpapers/providers/wallpapers.dart';
 import 'package:provider/provider.dart';
 //provider
 import '../providers/types.dart';
@@ -19,8 +20,19 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
     final _index = Provider.of<Types>(context, listen: false).currentIndex;
     final String _currentTypeName =
         Provider.of<Types>(context, listen: false).types[_index].typeName;
+    final wallpapers = Provider.of<Wallpapers>(context, listen: false)
+        .typeName(_currentTypeName);
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_sharp,
+            size: deviceSize.width * 0.08,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         backgroundColor: Colors.white,
         title: Text(
           _currentTypeName.toUpperCase(),
@@ -42,11 +54,11 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
                   bottom: deviceSize.height * 0.07,
                   left: deviceSize.width * 0.3,
                   right: deviceSize.width * 0.3),
-              child: CountingWidget(),
+              child: CountingWidget(wallpapers.length),
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage('lib/assets/images/$_currentTypeName.jpg'),
+                  image: AssetImage("lib/assets/images/$_currentTypeName.jpg"),
                 ),
               ),
             ),
@@ -54,9 +66,9 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
           SliverGrid(
               delegate: SliverChildBuilderDelegate(
                 (ctx, index) {
-                  return WallpaperCard();
+                  return WallpaperCard(wallpapers[index]);
                 },
-                childCount: 10,
+                childCount: wallpapers.length,
               ),
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                   childAspectRatio: 10 / 20,

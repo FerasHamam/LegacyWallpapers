@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:legacywallpapers/providers/wallpapers.dart';
+import 'package:provider/provider.dart';
 //screens
 import '../screens/WallpapersScreen.dart';
 //widget
 import 'CountingWidget.dart';
 
-class CompanyCard extends StatelessWidget {
+class TypeCard extends StatelessWidget {
   final String name;
-  CompanyCard(this.name);
+  TypeCard(this.name);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,9 @@ class CompanyCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.only(top: deviceSize.height * 0.4),
         child: Center(
-          child: CountingWidget(),
+          child: CountingWidget(Provider.of<Wallpapers>(context, listen: false)
+              .typeName(name)
+              .length),
         ),
         decoration: BoxDecoration(
           image: DecorationImage(

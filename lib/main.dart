@@ -1,15 +1,19 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+//firebase
+import 'package:firebase_core/firebase_core.dart';
 //providers
 import 'package:provider/provider.dart';
+import 'providers/wallpapers.dart';
 import 'providers/types.dart';
 //screens
 import 'screens/TypesScreen.dart';
 import 'screens/WallpapersScreen.dart';
+import 'screens/Initial.dart';
+import 'screens/ImagePreviewScreen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -18,7 +22,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: Types()),
+        ChangeNotifierProvider.value(
+          value: Types(),
+        ),
+        ChangeNotifierProvider.value(
+          value: Wallpapers(),
+        ),
       ],
       builder: (ctx, _) => MaterialApp(
         title: 'LEGACY WALLPAPERS',
@@ -37,10 +46,11 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: TypesScreen(),
+        home: Initial(),
         routes: {
           TypesScreen.name: (ctx) => TypesScreen(),
           WallpapersScreen.name: (ctx) => WallpapersScreen(),
+          ImagePreviewScreen.name: (ctx) => ImagePreviewScreen(),
         },
       ),
     );

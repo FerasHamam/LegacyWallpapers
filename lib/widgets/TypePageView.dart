@@ -7,13 +7,13 @@ import '../providers/types.dart';
 //widgets
 import 'TypeCard.dart';
 
-class CompanyPageView extends StatelessWidget {
+class TypePageView extends StatelessWidget {
   //function to build cards
   List<Widget> companyCardWidget(List<Type> types) {
     print('object');
     return types
         .map(
-          (type) => CompanyCard(type.typeName),
+          (type) => TypeCard(type.typeName),
         )
         .toList();
   }

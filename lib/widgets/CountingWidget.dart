@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CountingWidget extends StatelessWidget {
+  final int count;
+  CountingWidget(this.count);
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
@@ -21,7 +23,7 @@ class CountingWidget extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            '0 Wallpapers',
+            '$count Wallpapers',
             style: TextStyle(color: Colors.black),
           ),
         ));

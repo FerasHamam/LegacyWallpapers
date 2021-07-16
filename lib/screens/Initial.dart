@@ -1,19 +1,23 @@
-// import 'package:flutter/material.dart';
-// import 'package:legacywallpapers/providers/companies.dart';
-// import 'package:provider/provider.dart';
-// //providers
-// //screens
-// import 'CompanyScreen.dart';
-// import 'LoadingScreen.dart';
+import 'package:flutter/material.dart';
+import 'package:legacywallpapers/providers/wallpapers.dart';
+import 'package:provider/provider.dart';
 
-// class Initial extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return FutureBuilder(
-//         future: Provider.of<Types>(context, listen: false).fetchAndSet(),
-//         builder: (ctx, AsyncSnapshot snapShot) =>
-//             snapShot.connectionState == ConnectionState.waiting
-//                 ? LoadingScreen()
-//                 : TypesScreen());
-//   }
-// }
+//providers
+import '../providers/wallpapers.dart';
+//screens
+import 'TypesScreen.dart';
+import 'LoadingScreen.dart';
+
+class Initial extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: Provider.of<Wallpapers>(context, listen: false).fetchData(),
+      builder: (ctx, snapShot) {
+        return snapShot.connectionState == ConnectionState.waiting
+            ? LoadingScreen()
+            : TypesScreen();
+      },
+    );
+  }
+}

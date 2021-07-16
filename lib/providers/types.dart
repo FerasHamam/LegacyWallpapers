@@ -5,9 +5,8 @@ import '../items/Type.dart';
 
 class Types with ChangeNotifier {
   List<Type> _types = [
-    Type(typeName: 'Minimal'),
-    Type(typeName: 'Fantasy'),
-    Type(typeName: 'Minimal'),
+    Type(typeName: 'AMOLED'),
+    Type(typeName: 'NATURE'),
   ];
   int currentIndex = 0;
   List<Type> get types {

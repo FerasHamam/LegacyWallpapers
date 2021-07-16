@@ -15,7 +15,7 @@ class LoadingScreen extends StatelessWidget {
           children: [
             SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   SizedBox(
                     height: deviceSize.height * 0.05,
