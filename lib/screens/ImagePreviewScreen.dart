@@ -29,8 +29,9 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
   Widget build(BuildContext context) {
     final Size deviceSize = MediaQuery.of(context).size;
     final args =
-        ModalRoute.of(context)?.settings.arguments as Map<String, String>;
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final url = args["url"];
+    final bool isFav = args['isFav'];
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -70,7 +71,7 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
             ),
           ),
           AnimatedAppBar(_showAppBar),
-          FunctionsWidget(deviceSize, _showAppBar),
+          FunctionsWidget(deviceSize, _showAppBar, url, isFav),
         ],
       ),
     );

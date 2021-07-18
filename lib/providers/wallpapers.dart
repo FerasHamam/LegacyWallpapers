@@ -1,41 +1,70 @@
 import 'package:flutter/material.dart';
-//aws
+//firestore
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Wallpapers with ChangeNotifier {
-  List<String> _amoled = [];
-  List<String> _nature = [];
-  get amoled {
-    return [..._amoled];
+  //types
+  List<String> _types = [];
+  addType(String name) {
+    types.add(name);
   }
 
-  get nature {
-    return [..._nature];
+  List<String> get types {
+    return [..._types];
   }
 
-  List<String> typeName(String type) {
-    if (type.toLowerCase() == "amoled")
-      return amoled;
-    else if (type.toLowerCase() == "nature") return nature;
-    return [];
+  int currentIndex = 0;
+
+  void setIndex(int index) {
+    currentIndex = index;
+    notifyListeners();
+  }
+  //
+
+  //wallpapers
+  Map<String, List<Map<String, Object>>> _walls = {};
+  Map<String, List<Map<String, Object>>> get walls {
+    return _walls;
+  }
+  //
+
+  //Favorite
+  List<String> _fav = [];
+  List<String> get fav {
+    return [..._fav];
   }
 
+  bool setFav(String url) {
+    _fav.add(url);
+    notifyListeners();
+    return true;
+  }
+
+  bool deleteFav(String url) {
+    _fav.removeWhere((wallpaper) => wallpaper == url);
+    notifyListeners();
+    return false;
+  }
+  //
+
+  //fetch
   Future<void> fetchData() async {
-    QuerySnapshot<Map<String, dynamic>> amoled =
-        await FirebaseFirestore.instance.collection("AMOLED").get();
-    QuerySnapshot<Map<String, dynamic>> nature =
-        await FirebaseFirestore.instance.collection("NATURE").get();
-    amoled.docs.forEach(
-      (doc) {
-        _amoled.add(doc['url']);
+    QuerySnapshot<Map<String, dynamic>> types =
+        await FirebaseFirestore.instance.collection("types").get();
+    types.docs.forEach((type) {
+      _types.add(type['name'].toString().toLowerCase());
+    });
+    QuerySnapshot<Map<String, dynamic>> wallpapers =
+        await FirebaseFirestore.instance.collection("wallpapers").get();
+    wallpapers.docs.forEach(
+      (wallpaper) {
+        final wallpaperData = wallpaper.data();
+        _walls.putIfAbsent(
+            wallpaperData['type'].toString().toLowerCase(), () => []);
+        _walls[wallpaperData['type'].toString().toLowerCase()]?.add(
+            {'url': wallpaperData['url'], 'isFav': wallpaperData['isFav']});
       },
     );
-    nature.docs.forEach(
-      (doc) {
-        _nature.add(doc['url']);
-      },
-    );
-
     notifyListeners();
     return;
   }

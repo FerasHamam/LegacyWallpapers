@@ -2,7 +2,7 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 //providers
-import '../providers/types.dart';
+import '../providers/wallpapers.dart';
 //items
 import '../items/colors.dart';
 //widgets
@@ -44,11 +44,11 @@ class _TypesScreenState extends State<TypesScreen>
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: Consumer<Types>(
-        builder: (ctx, companies, ch) {
+      body: Consumer<Wallpapers>(
+        builder: (ctx, provider, ch) {
           List<Color> _colorsChosen = [
-            pickedColor[companies.currentIndex]['1']!,
-            pickedColor[companies.currentIndex]['2']!
+            pickedColor[provider.currentIndex]['1']!,
+            pickedColor[provider.currentIndex]['2']!
           ];
           return AnimatedContainer(
             duration: Duration(milliseconds: 150),
@@ -77,11 +77,11 @@ class _TypesScreenState extends State<TypesScreen>
             SizedBox(
               height: deviceSize.height * 0.05,
             ),
-            Consumer<Types>(
-              builder: (ctx, types, _) {
+            Consumer<Wallpapers>(
+              builder: (ctx, provider, _) {
                 return Container(
-                    child:
-                        AnimatedText(types.types[types.currentIndex].typeName));
+                  child: AnimatedText(provider.types[provider.currentIndex]),
+                );
               },
             ),
             Flexible(child: TypePageView()),

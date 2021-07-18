@@ -4,7 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 //providers
 import 'package:provider/provider.dart';
 import 'providers/wallpapers.dart';
-import 'providers/types.dart';
 //screens
 import 'screens/TypesScreen.dart';
 import 'screens/WallpapersScreen.dart';
@@ -22,9 +21,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(
-          value: Types(),
-        ),
         ChangeNotifierProvider.value(
           value: Wallpapers(),
         ),

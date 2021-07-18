@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:legacywallpapers/providers/wallpapers.dart';
 import 'package:provider/provider.dart';
-//itmes
-import '../../items/Type.dart';
-//providers
-import '../../providers/types.dart';
 //widgets
 import 'TypeCard.dart';
 
 class TypePageView extends StatelessWidget {
   //function to build cards
-  List<Widget> companyCardWidget(List<Type> types) {
-    print('object');
-    return types
-        .map(
-          (type) => TypeCard(type.typeName),
-        )
-        .toList();
+  List<Widget> companyCardWidget(List<String> types) {
+    final List<Widget> _listOfTypes = [];
+    types.forEach(
+      (type) {
+        _listOfTypes.add(
+          TypeCard(type),
+        );
+      },
+    );
+    return _listOfTypes;
   }
   //
 
@@ -23,7 +23,7 @@ class TypePageView extends StatelessWidget {
   Widget build(BuildContext context) {
     //initial values
     final PageController _controller = PageController();
-    final types = Provider.of<Types>(context, listen: false).types;
+    final types = Provider.of<Wallpapers>(context, listen: false).types;
     //
 
     return PageView(
@@ -32,7 +32,7 @@ class TypePageView extends StatelessWidget {
       children: companyCardWidget(types),
       physics: BouncingScrollPhysics(),
       onPageChanged: (index) {
-        Provider.of<Types>(context, listen: false).setIndex(index);
+        Provider.of<Wallpapers>(context, listen: false).setIndex(index);
       },
     );
   }

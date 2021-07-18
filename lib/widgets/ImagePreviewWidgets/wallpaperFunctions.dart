@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:legacywallpapers/providers/wallpapers.dart';
+import 'package:provider/provider.dart';
 
 class FunctionsWidget extends StatefulWidget {
   final Size deviceSize;
   final bool _showAppBar;
-  FunctionsWidget(this.deviceSize, this._showAppBar);
+  final String url;
+  bool isFav;
+  FunctionsWidget(this.deviceSize, this._showAppBar, this.url, this.isFav);
 
   @override
   _FunctionsWidgetState createState() => _FunctionsWidgetState();
@@ -13,7 +17,6 @@ class _FunctionsWidgetState extends State<FunctionsWidget>
     with TickerProviderStateMixin {
   late Animation<Offset> _animPosition;
   late AnimationController _controller;
-
   @override
   void initState() {
     super.initState();
@@ -76,9 +79,23 @@ class _FunctionsWidgetState extends State<FunctionsWidget>
                 width: widget.deviceSize.width * 0.3,
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  final wallpapers =
+                      Provider.of<Wallpapers>(context, listen: false);
+                  if (!widget.isFav) {
+                    setState(() {
+                      widget.isFav = wallpapers.setFav(widget.url);
+                    });
+                  } else {
+                    setState(() {
+                      widget.isFav = wallpapers.deleteFav(widget.url);
+                    });
+                  }
+                },
                 icon: Icon(
-                  Icons.favorite_rounded,
+                  widget.isFav
+                      ? Icons.favorite_rounded
+                      : Icons.favorite_border_rounded,
                   color: Colors.white,
                   size: widget.deviceSize.width * 0.1,
                 ),

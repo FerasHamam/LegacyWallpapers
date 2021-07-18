@@ -59,7 +59,7 @@ class _AnimatedTextState extends State<AnimatedText>
           child: SlideTransition(
             position: _animPosition,
             child: Text(
-              widget.text,
+              widget.text.toUpperCase(),
               key: GlobalKey(),
               style: TextStyle(
                   fontSize: deviceSize.width * 0.15,

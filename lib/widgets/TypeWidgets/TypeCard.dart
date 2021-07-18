@@ -13,6 +13,9 @@ class TypeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
+    final provider =
+        Provider.of<Wallpapers>(context, listen: false).walls[name];
+
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(WallpapersScreen.name);
@@ -20,9 +23,7 @@ class TypeCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.only(top: deviceSize.height * 0.4),
         child: Center(
-          child: CountingWidget(Provider.of<Wallpapers>(context, listen: false)
-              .typeName(name)
-              .length),
+          child: CountingWidget(provider == null ? 0 : provider.length),
         ),
         decoration: BoxDecoration(
           image: DecorationImage(

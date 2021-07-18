@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:legacywallpapers/providers/wallpapers.dart';
 import 'package:provider/provider.dart';
-//provider
-import '../providers/types.dart';
 //widgets
 import '../widgets/WallpapersWidgets/WallpaperCard.dart';
 import '../widgets/WallpapersWidgets/CountingWidgetBorder.dart';
@@ -16,12 +14,13 @@ class WallpapersScreen extends StatefulWidget {
 class _WallpapersScreenState extends State<WallpapersScreen> {
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<Wallpapers>(context, listen: false);
     Size deviceSize = MediaQuery.of(context).size;
-    final _index = Provider.of<Types>(context, listen: false).currentIndex;
-    final String _currentTypeName =
-        Provider.of<Types>(context, listen: false).types[_index].typeName;
-    final wallpapers = Provider.of<Wallpapers>(context, listen: false)
-        .typeName(_currentTypeName);
+    final _index = provider.currentIndex;
+    final String _currentTypeName = provider.types[_index];
+    final List<Map<String, Object>> wallpapers =
+        Provider.of<Wallpapers>(context).walls[_currentTypeName] ?? [];
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -67,7 +66,9 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
           SliverGrid(
               delegate: SliverChildBuilderDelegate(
                 (ctx, index) {
-                  return WallpaperCard(wallpapers[index]);
+                  String url = wallpapers[index]['url'].toString();
+                  bool isFav = wallpapers[index]['isFav'] == true;
+                  return WallpaperCard(url, isFav);
                 },
                 childCount: wallpapers.length,
               ),
