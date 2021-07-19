@@ -1,6 +1,8 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 //firebase
 import 'package:firebase_core/firebase_core.dart';
+
 //providers
 import 'package:provider/provider.dart';
 import 'providers/wallpapers.dart';
@@ -9,6 +11,7 @@ import 'screens/TypesScreen.dart';
 import 'screens/WallpapersScreen.dart';
 import 'screens/Initial.dart';
 import 'screens/ImagePreviewScreen.dart';
+import 'screens/FavoriteScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,17 +31,18 @@ class MyApp extends StatelessWidget {
       builder: (ctx, _) => MaterialApp(
         title: 'LEGACY WALLPAPERS',
         theme: ThemeData(
-          primarySwatch: Colors.purple,
+          primarySwatch: Colors.grey,
           accentColor: Colors.white,
           textTheme: TextTheme(
-            bodyText2: TextStyle(fontFamily: 'RobotoSlab', color: Colors.white),
+            bodyText2: TextStyle(fontFamily: 'Infinity', color: Colors.white),
           ),
           appBarTheme: AppBarTheme(
             textTheme: TextTheme(
               headline6: TextStyle(
-                  fontFamily: 'RobotoSlab',
-                  fontSize: 24,
-                  color: Color(0xeeffffff)),
+                  fontFamily: 'Simplifica',
+                  fontSize: 35,
+                  color: Color(0xCCffffff),
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ),
@@ -47,6 +51,7 @@ class MyApp extends StatelessWidget {
           TypesScreen.name: (ctx) => TypesScreen(),
           WallpapersScreen.name: (ctx) => WallpapersScreen(),
           ImagePreviewScreen.name: (ctx) => ImagePreviewScreen(),
+          FavoriteScreen.name: (ctx) => FavoriteScreen(),
         },
       ),
     );

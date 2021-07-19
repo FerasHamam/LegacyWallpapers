@@ -72,7 +72,7 @@ class _TypesScreenState extends State<TypesScreen>
             Divider(
               height: deviceSize.height * 0.001,
               thickness: 2,
-              color: Color(0x33ffffff),
+              color: Color(0x77ffffff),
             ),
             SizedBox(
               height: deviceSize.height * 0.05,

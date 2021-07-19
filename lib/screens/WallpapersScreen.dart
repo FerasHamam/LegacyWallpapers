@@ -27,7 +27,7 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
           icon: Icon(
             Icons.arrow_back_sharp,
             size: deviceSize.width * 0.09,
-            color: Colors.black45,
+            color: Colors.black54,
           ),
           onPressed: () {
             Navigator.of(context).pop();
@@ -64,20 +64,21 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
             ),
           ),
           SliverGrid(
-              delegate: SliverChildBuilderDelegate(
-                (ctx, index) {
-                  String url = wallpapers[index]['url'].toString();
-                  bool isFav = wallpapers[index]['isFav'] == true;
-                  return WallpaperCard(url, isFav);
-                },
-                childCount: wallpapers.length,
-              ),
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  childAspectRatio: 10 / 20,
-                  mainAxisExtent: deviceSize.height * 0.4,
-                  maxCrossAxisExtent: deviceSize.width * 0.5,
-                  crossAxisSpacing: deviceSize.width * 0.03,
-                  mainAxisSpacing: deviceSize.height * 0.015)),
+            delegate: SliverChildBuilderDelegate(
+              (ctx, index) {
+                final wallpaper = wallpapers[index];
+                String url = wallpaper['url'].toString();
+                String id = wallpaper['id'].toString();
+                return WallpaperCard(url, id);
+              },
+              childCount: wallpapers.length,
+            ),
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              childAspectRatio: 9 / 20,
+              mainAxisExtent: deviceSize.height * 0.4,
+              maxCrossAxisExtent: deviceSize.width * 0.6,
+            ),
+          ),
         ],
       ),
     );

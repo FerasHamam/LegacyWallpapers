@@ -26,7 +26,9 @@ dependencies:
   firebase_core: ^1.3.0
   cloud_firestore: ^2.4.0
   provider: ^5.0.0
-  photo_view: ^0.11.1
+  flutter_cache_manager: ^3.1.2
+  wallpaper_manager: ^1.0.10
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -72,6 +74,16 @@ flutter:
       fonts:
         - asset: lib/assets/fonts/RobotoSlab-Bold.ttf
         - asset: lib/assets/fonts/RobotoSlab-Regular.ttf
+    - family: Hero
+      fonts:
+        - asset: lib/assets/fonts/Hero-Bold.ttf
+        - asset: lib/assets/fonts/Hero-Regular.ttf
+    - family: Simplifica
+      fonts:
+        - asset: lib/assets/fonts/SIMPLIFICA.ttf
+    - family: Infinity
+      fonts:
+        - asset: lib/assets/fonts/Infinity.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

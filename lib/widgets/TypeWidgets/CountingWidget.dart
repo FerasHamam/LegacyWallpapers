@@ -24,7 +24,10 @@ class CountingWidget extends StatelessWidget {
         child: Center(
           child: Text(
             '$count Wallpapers',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'Hero',
+                fontSize: deviceSize.width * 0.04),
           ),
         ));
   }

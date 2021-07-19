@@ -18,7 +18,7 @@ class _AnimatedAppBarState extends State<AnimatedAppBar>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 70),
+      duration: Duration(milliseconds: 150),
     );
     _animPosition = Tween<Offset>(begin: Offset(0, -1), end: Offset.zero)
         .animate(
@@ -45,26 +45,34 @@ class _AnimatedAppBarState extends State<AnimatedAppBar>
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
-    return SlideTransition(
-      position: _animPosition,
-      child: Container(
-        padding: EdgeInsets.all(10),
-        alignment: Alignment.bottomLeft,
-        child: IconButton(
-          onPressed: () {
-            SystemChrome.setEnabledSystemUIOverlays(
-                [SystemUiOverlay.bottom, SystemUiOverlay.top]);
-            Navigator.of(context).pop();
-          },
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            size: deviceSize.width * 0.08,
-            color: Colors.white,
+    return WillPopScope(
+      onWillPop: () async {
+        SystemChrome.setEnabledSystemUIOverlays(
+            [SystemUiOverlay.bottom, SystemUiOverlay.top]);
+        Navigator.of(context).pop();
+        return true;
+      },
+      child: SlideTransition(
+        position: _animPosition,
+        child: Container(
+          padding: EdgeInsets.all(5),
+          alignment: Alignment.bottomLeft,
+          child: IconButton(
+            onPressed: () {
+              SystemChrome.setEnabledSystemUIOverlays(
+                  [SystemUiOverlay.bottom, SystemUiOverlay.top]);
+              Navigator.of(context).pop();
+            },
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              size: deviceSize.width * 0.09,
+              color: Colors.white,
+            ),
           ),
+          color: Colors.black26,
+          width: deviceSize.width,
+          height: deviceSize.height * 0.08,
         ),
-        color: Colors.black26,
-        width: deviceSize.width,
-        height: deviceSize.height * 0.12,
       ),
     );
   }

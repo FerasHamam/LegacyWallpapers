@@ -44,7 +44,7 @@ class TypeCard extends StatelessWidget {
           top: deviceSize.height * 0.04,
           right: deviceSize.width * 0.12,
           left: deviceSize.width * 0.12,
-          bottom: deviceSize.height * 0.02,
+          bottom: deviceSize.height * 0.03,
         ),
       ),
     );
