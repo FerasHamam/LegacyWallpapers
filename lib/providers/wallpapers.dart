@@ -1,13 +1,24 @@
+import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
-//firestore
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:http/http.dart' as http;
+import 'package:sqflite/sqflite.dart' as sql;
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 class Wallpapers with ChangeNotifier {
   //types for types screen => prepare
-  List<String> _types = [];
-  addType(String name) {
-    types.add(name);
-  }
+  List<String> _types = [
+    'abstract',
+    'ocean',
+    'forest',
+    'mountain',
+    'fantasy',
+    'animal',
+    'car',
+    'city',
+    'sci fi',
+  ];
 
   List<String> get types {
     return [..._types];
@@ -29,72 +40,111 @@ class Wallpapers with ChangeNotifier {
   //
 
   //Favorite
-  List<Map<String, String>> _fav = [];
-  List<Map<String, String>> get fav {
+  List<Map<String, Object?>> _fav = [];
+  List<Map<String, Object?>> get fav {
     return [..._fav];
   }
 
+  String favDbName = 'FAV';
   //handle favorite feature in database
-  void databaseFav(bool isFav, String id) async {
-    final QuerySnapshot<Map<String, dynamic>> wallpapers =
-        await FirebaseFirestore.instance.collection("wallpapers").get();
-    final wallpaper =
-        wallpapers.docs.firstWhere((wallpaper) => wallpaper.id == id);
-    wallpaper.reference.update({'isFav': isFav});
+  void databaseFav(bool isFav, int id, String url, String user) async {
+    final path = await getApplicationDocumentsDirectory();
+    String dbPath = join(path.path, 'fav.db');
+    final db = await sql.openDatabase(
+      dbPath,
+      version: 1,
+      onOpen: (db) async {
+        if (isFav) {
+          await db.insert(
+              favDbName, {'id': id, 'url': url, 'isFav': 1, 'user': user},
+              conflictAlgorithm: sql.ConflictAlgorithm.replace);
+        } else {
+          await db.delete(favDbName, where: 'id = $id');
+        }
+      },
+    );
+    db.close();
   }
 
   //
   //handle favorite feature locally
-  void setFav(String url, String id) async {
-    _fav.add({id: url});
+  void setFav(String url, int id, String user) async {
+    _fav.add({'id': id, 'url': url, 'isFav': 1, 'user': user});
     notifyListeners();
-    databaseFav(true, id);
+    databaseFav(true, id, url, user);
   }
 
-  void deleteFav(String url, id) async {
-    _fav.removeWhere((wallpaper) => wallpaper[id] == url);
+  void deleteFav(String url, int id, String user) async {
+    _fav.removeWhere((wallpaper) => wallpaper['id'] == id);
     notifyListeners();
-    databaseFav(false, id);
+    databaseFav(false, id, url, user);
   }
 
-  bool containsFav(String url, String id) {
-    bool _isFav = false;
-    if (_fav.isEmpty) return false;
-    _fav.firstWhere((favWallpaper) {
-      _isFav = favWallpaper.containsKey(id) == true;
-      return _isFav;
-    }, orElse: () => {});
-    return _isFav;
+  bool containsFav(String url, int id) {
+    print(id);
+
+    bool isFav = false;
+    _fav.forEach(
+      (fav) {
+        print('oui');
+        if (fav['id'] == id) {
+          isFav = true;
+          return;
+        }
+      },
+    );
+    return isFav;
   }
   //
   //
 
   //fetch data from cloud
   Future<void> fetchData() async {
-    QuerySnapshot<Map<String, dynamic>> types =
-        await FirebaseFirestore.instance.collection("types").get();
-    types.docs.forEach((type) {
-      _types.add(type['name'].toString().toLowerCase());
+    //fav
+    List<Map<String, Object?>> favList = [];
+    final path = await getApplicationDocumentsDirectory();
+    String dbPath = join(path.path, 'fav.db');
+    final db = await sql.openDatabase(dbPath, version: 1,
+        onCreate: (db, version) async {
+      await db.execute(
+          '''CREATE TABLE $favDbName(id INTEGER PRIMARY KEY, url TEXT, isFav INTEGER, user TEXT)''');
+    }, onOpen: (db) async {
+      favList = await db
+          .rawQuery('Select * From $favDbName'); //fav list that the app use
     });
-    QuerySnapshot<Map<String, dynamic>> wallpapers =
-        await FirebaseFirestore.instance.collection("wallpapers").get();
-    wallpapers.docs.forEach(
-      (wallpaper) {
-        final wallpaperData = wallpaper.data();
-        String name = wallpaperData['type'].toString().toLowerCase();
-        final isFav = wallpaperData['isFav'];
-        final url = wallpaperData['url'];
-        final id = wallpaper.id;
-        _walls.putIfAbsent(name, () => []);
-        _walls[name]?.add({'url': url, 'isFav': isFav, 'id': id});
-        if (isFav) {
-          _fav.add(
-            {id: url},
+    await db.close();
+    favList.forEach((item) {
+      _fav.add(item);
+    });
+    //
+    if (_types.length > 0)
+      _types.forEach(
+        (type) async {
+          final response = await http.get(
+            Uri.parse(
+              'https://pixabay.com/api/?key=22575208-3109e2dc674cc85adb78b73af&q=$type+wallpaper&orientation=vertical&per_page=20min_width=1019&min_height=1080',
+            ),
           );
-        }
-      },
-    );
+          final result = jsonDecode(response.body);
+          List<dynamic> hits = result['hits'];
+          hits.forEach(
+            (wallpaper) {
+              _walls.putIfAbsent(type, () => []);
+              _walls[type]?.add(
+                {
+                  'url': wallpaper['largeImageURL'] ?? "",
+                  'id': wallpaper['id'],
+                  'name': wallpaper['user'] ?? "",
+                },
+              );
+            },
+          );
+        },
+      );
     notifyListeners();
-    return;
+    await Future.delayed(Duration(seconds: 5), () {
+      notifyListeners();
+      return;
+    });
   }
 }

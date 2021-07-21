@@ -51,7 +51,7 @@ class _TypesScreenState extends State<TypesScreen>
             pickedColor[provider.currentIndex]['2']!
           ];
           return AnimatedContainer(
-            duration: Duration(milliseconds: 150),
+            duration: const Duration(milliseconds: 150),
             curve: Curves.easeInOutQuart,
             height: deviceSize.height,
             decoration: BoxDecoration(
@@ -72,7 +72,7 @@ class _TypesScreenState extends State<TypesScreen>
             Divider(
               height: deviceSize.height * 0.001,
               thickness: 2,
-              color: Color(0x77ffffff),
+              color: const Color(0x77ffffff),
             ),
             SizedBox(
               height: deviceSize.height * 0.05,

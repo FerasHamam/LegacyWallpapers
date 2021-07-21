@@ -45,7 +45,7 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
         slivers: [
           SliverAppBar(
             leading: Container(),
-            floating: true,
+            floating: false,
             centerTitle: true,
             expandedHeight: deviceSize.height * 0.2,
             flexibleSpace: Container(
@@ -68,8 +68,9 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
               (ctx, index) {
                 final wallpaper = wallpapers[index];
                 String url = wallpaper['url'].toString();
-                String id = wallpaper['id'].toString();
-                return WallpaperCard(url, id);
+                final id = wallpaper['id'];
+                String user = wallpaper['name'].toString();
+                return WallpaperCard(url, id, user);
               },
               childCount: wallpapers.length,
             ),

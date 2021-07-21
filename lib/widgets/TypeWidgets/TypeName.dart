@@ -21,7 +21,7 @@ class _AnimatedTextState extends State<AnimatedText>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 100),
+      duration: const Duration(milliseconds: 100),
     );
     _animOpacity = Tween<double>(begin: 0, end: 0.8).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOutCirc),

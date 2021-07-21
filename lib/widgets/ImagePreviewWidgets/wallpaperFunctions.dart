@@ -11,8 +11,10 @@ class FunctionsWidget extends StatefulWidget {
   final Size deviceSize;
   final bool _showAppBar;
   final String url;
-  final String id;
-  FunctionsWidget(this.deviceSize, this._showAppBar, this.url, this.id);
+  final int id;
+  final String user;
+  FunctionsWidget(
+      this.deviceSize, this._showAppBar, this.url, this.id, this.user);
 
   @override
   _FunctionsWidgetState createState() => _FunctionsWidgetState();
@@ -20,18 +22,17 @@ class FunctionsWidget extends StatefulWidget {
 
 class _FunctionsWidgetState extends State<FunctionsWidget>
     with TickerProviderStateMixin {
-  late Animation<Offset> _animPosition;
+  late Animation<double> _animOpacity;
   late AnimationController _controller;
   bool _isLoading = false;
   @override
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 150),
+      duration: Duration(milliseconds: 120),
     );
-    _animPosition = Tween<Offset>(begin: Offset(0, 1), end: Offset.zero)
-        .animate(
-            CurvedAnimation(parent: _controller, curve: Curves.bounceInOut));
+    _animOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.decelerate));
     _controller.forward();
     super.initState();
   }
@@ -90,17 +91,22 @@ class _FunctionsWidgetState extends State<FunctionsWidget>
                 )),
           )
         : Positioned(
-            top: widget.deviceSize.height * 0.9,
-            child: SlideTransition(
-              position: _animPosition,
+            top: widget.deviceSize.height * 0.92,
+            child: FadeTransition(
+              opacity: _animOpacity,
               child: Container(
-                height: widget.deviceSize.height * 0.1,
+                alignment: Alignment.center,
+                height: widget.deviceSize.height * 0.08,
                 width: widget.deviceSize.width,
-                color: Colors.black26,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Colors.black12, Colors.black38])),
                 child: Row(
                   children: [
                     SizedBox(
-                      width: widget.deviceSize.width * 0.05,
+                      width: widget.deviceSize.width * 0.03,
                     ),
                     TextButton.icon(
                       onPressed: () async {
@@ -119,14 +125,15 @@ class _FunctionsWidgetState extends State<FunctionsWidget>
                       ),
                     ),
                     SizedBox(
-                      width: widget.deviceSize.width * 0.3,
+                      width: widget.deviceSize.width * 0.28,
                     ),
                     IconButton(
                       onPressed: () {
                         if (isFav) {
-                          return provider.deleteFav(widget.url, widget.id);
+                          return provider.deleteFav(
+                              widget.url, widget.id, widget.user);
                         }
-                        provider.setFav(widget.url, widget.id);
+                        provider.setFav(widget.url, widget.id, widget.user);
                       },
                       icon: Icon(
                         isFav

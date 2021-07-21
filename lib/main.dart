@@ -1,8 +1,5 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
-//firebase
-import 'package:firebase_core/firebase_core.dart';
-
 //providers
 import 'package:provider/provider.dart';
 import 'providers/wallpapers.dart';
@@ -14,8 +11,6 @@ import 'screens/ImagePreviewScreen.dart';
 import 'screens/FavoriteScreen.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

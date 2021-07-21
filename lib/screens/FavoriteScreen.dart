@@ -44,8 +44,11 @@ class FavoriteScreen extends StatelessWidget {
               maxCrossAxisExtent: deviceSize.width * 0.5,
             ),
             itemBuilder: (ctx, index) {
-              return WallpaperCard(wallpapers.fav[index].values.first,
-                  wallpapers.fav[index].keys.first);
+              return WallpaperCard(
+                wallpapers.fav[index]['url'],
+                wallpapers.fav[index]['id'],
+                wallpapers.fav[index]['name'],
+              );
             },
             itemCount: wallpapers.fav.length,
           );

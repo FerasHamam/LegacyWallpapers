@@ -14,13 +14,6 @@ class ImagePreviewScreen extends StatefulWidget {
 class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
   final _transCont = TransformationController();
   bool _showAppBar = true;
-  @override
-  // void initState() {
-  //   if (_firstBuild)
-  //     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-  //   _firstBuild = false;
-  //   super.initState();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +22,7 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final url = args['url'];
     final id = args['id'];
+    final user = args['user'];
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -70,7 +64,7 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
             ),
           ),
           // AnimatedAppBar(_showAppBar),
-          FunctionsWidget(deviceSize, _showAppBar, url, id),
+          FunctionsWidget(deviceSize, _showAppBar, url, id, user),
         ],
       ),
     );

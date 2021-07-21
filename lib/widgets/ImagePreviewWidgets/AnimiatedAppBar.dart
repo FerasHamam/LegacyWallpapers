@@ -22,7 +22,7 @@ class _AnimatedAppBarState extends State<AnimatedAppBar>
     );
     _animPosition = Tween<Offset>(begin: Offset(0, -1), end: Offset.zero)
         .animate(
-            CurvedAnimation(parent: _controller, curve: Curves.bounceInOut));
+            CurvedAnimation(parent: _controller, curve: Curves.decelerate));
     _controller.forward();
   }
 
