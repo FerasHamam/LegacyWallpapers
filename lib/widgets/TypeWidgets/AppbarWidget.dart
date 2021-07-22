@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:legacywallpapers/screens/FavoriteScreen.dart';
-
 //screens
-// import 'package:legacywallpapers/screens/FavoriteScreen.dart';
+import 'package:legacywallpapers/screens/AboutScreen.dart';
+import 'package:legacywallpapers/screens/FavoriteScreen.dart';
 
 class AppbarWidget extends StatelessWidget {
   @override
@@ -12,17 +11,20 @@ class AppbarWidget extends StatelessWidget {
       width: deviceSize.width,
       margin: EdgeInsets.only(top: deviceSize.width * 0.02),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           IconButton(
             padding: EdgeInsets.all(0),
             alignment: Alignment.center,
-            icon: Icon(Icons.details,
+            icon: Icon(Icons.details_sharp,
                 color: Color(0xccffffff), size: deviceSize.width * 0.12),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(AboutScreen.name);
+            },
           ),
           SizedBox(
-            width: deviceSize.width * 0.2,
+            width: deviceSize.width * 0.23,
           ),
           SizedBox(
             width: deviceSize.width * 0.3,

@@ -1,5 +1,6 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
+import 'package:legacywallpapers/screens/AboutScreen.dart';
 //providers
 import 'package:provider/provider.dart';
 import 'providers/wallpapers.dart';
@@ -47,6 +48,8 @@ class MyApp extends StatelessWidget {
           WallpapersScreen.name: (ctx) => WallpapersScreen(),
           ImagePreviewScreen.name: (ctx) => ImagePreviewScreen(),
           FavoriteScreen.name: (ctx) => FavoriteScreen(),
+          AboutScreen.name: (ctx) => AboutScreen(),
+          Initial.name: (ctx) => Initial(),
         },
       ),
     );

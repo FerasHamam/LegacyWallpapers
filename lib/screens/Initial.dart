@@ -9,6 +9,7 @@ import 'TypesScreen.dart';
 import 'LoadingScreen.dart';
 
 class Initial extends StatelessWidget {
+  static String name = 'initial';
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

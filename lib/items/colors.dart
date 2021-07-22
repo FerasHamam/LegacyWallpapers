@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 List<Map<String, Color>> pickedColor = [
-  {'1': Color(0xff7C83FD), '2': Color(0xff334257)},
+  {'1': Color(0xffB77CFC), '2': Color(0xff7CDAFC)},
   {'1': Colors.blueGrey, '2': Colors.cyan},
   {'1': Color(0xff495e4d), '2': Color(0xff374046)},
   {'1': Color(0xff6D559A), '2': Color(0xfffd4900)},

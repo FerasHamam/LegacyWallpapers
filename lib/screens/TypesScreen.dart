@@ -23,7 +23,7 @@ class _TypesScreenState extends State<TypesScreen>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 200),
+      duration: Duration(milliseconds: 80),
     );
     super.initState();
   }
@@ -42,6 +42,14 @@ class _TypesScreenState extends State<TypesScreen>
 
   @override
   Widget build(BuildContext context) {
+    final walls = Provider.of<Wallpapers>(context, listen: false).walls;
+    bool reload = true;
+    print(walls.length);
+    if (walls.length > 0) {
+      setState(() {
+        reload = false;
+      });
+    }
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       body: Consumer<Wallpapers>(
@@ -51,8 +59,8 @@ class _TypesScreenState extends State<TypesScreen>
             pickedColor[provider.currentIndex]['2']!
           ];
           return AnimatedContainer(
-            duration: const Duration(milliseconds: 150),
-            curve: Curves.easeInOutQuart,
+            duration: const Duration(milliseconds: 80),
+            curve: Curves.easeInExpo,
             height: deviceSize.height,
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -84,7 +92,7 @@ class _TypesScreenState extends State<TypesScreen>
                 );
               },
             ),
-            Flexible(child: TypePageView()),
+            Flexible(child: TypePageView(reload)),
           ],
         ),
       ),

@@ -9,6 +9,8 @@ void showMoadl(
       backgroundColor: Colors.transparent,
       context: context,
       builder: (ctx) {
+        TextStyle styleForModal =
+            TextStyle(fontSize: deviceSize.width * 0.06, color: Colors.white);
         return Container(
           color: Colors.transparent,
           padding: EdgeInsets.symmetric(
@@ -16,7 +18,7 @@ void showMoadl(
               vertical: deviceSize.height * 0.15),
           height: deviceSize.height,
           child: Card(
-            color: Colors.black45,
+            color: Colors.black54,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -27,10 +29,11 @@ void showMoadl(
                   },
                   icon: Icon(
                     Icons.home_work_rounded,
+                    color: Colors.white,
                   ),
                   label: Text(
                     'Home Screen',
-                    style: TextStyle(fontSize: deviceSize.width * 0.06),
+                    style: styleForModal,
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -43,16 +46,19 @@ void showMoadl(
                     Navigator.of(context).pop();
                     setWallpaper('lock');
                   },
-                  icon: Icon(Icons.lock),
+                  icon: Icon(
+                    Icons.lock,
+                    color: Colors.white,
+                  ),
                   label: Text(
                     'Lock Screen',
-                    style: TextStyle(fontSize: deviceSize.width * 0.06),
+                    style: styleForModal,
                     textAlign: TextAlign.center,
                   ),
                 ),
                 Divider(
                   color: Colors.white,
-                  thickness: 1.3,
+                  thickness: 1.1,
                 ),
                 TextButton(
                   onPressed: () {
@@ -61,7 +67,7 @@ void showMoadl(
                   },
                   child: Text(
                     'Both',
-                    style: TextStyle(fontSize: deviceSize.width * 0.06),
+                    style: styleForModal,
                     textAlign: TextAlign.center,
                   ),
                 ),

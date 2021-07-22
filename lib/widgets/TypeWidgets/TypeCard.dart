@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:legacywallpapers/providers/wallpapers.dart';
+import 'package:legacywallpapers/screens/Initial.dart';
 import 'package:provider/provider.dart';
 //screens
 import '../../screens/WallpapersScreen.dart';
@@ -8,7 +9,8 @@ import 'CountingWidget.dart';
 
 class TypeCard extends StatelessWidget {
   final String name;
-  TypeCard(this.name);
+  final reload;
+  TypeCard(this.name, this.reload);
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +20,25 @@ class TypeCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(WallpapersScreen.name);
+        if (!reload) Navigator.of(context).pushNamed(WallpapersScreen.name);
       },
       child: Container(
         padding: EdgeInsets.only(top: deviceSize.height * 0.4),
         child: Center(
-          child: CountingWidget(provider == null ? 0 : provider.length),
+          child: reload == false
+              ? CountingWidget(provider == null ? 0 : provider.length)
+              : IconButton(
+                  padding: EdgeInsets.only(
+                      right: deviceSize.width * 0.15,
+                      bottom: deviceSize.height * 0.3),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed(Initial.name);
+                  },
+                  icon: Icon(
+                    Icons.replay_sharp,
+                    size: deviceSize.width * 0.2,
+                    color: Colors.white,
+                  )),
         ),
         decoration: BoxDecoration(
           image: DecorationImage(

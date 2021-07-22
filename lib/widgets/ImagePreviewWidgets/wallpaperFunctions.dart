@@ -95,39 +95,49 @@ class _FunctionsWidgetState extends State<FunctionsWidget>
             child: FadeTransition(
               opacity: _animOpacity,
               child: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: widget.deviceSize.width * 0.02),
                 alignment: Alignment.center,
                 height: widget.deviceSize.height * 0.08,
                 width: widget.deviceSize.width,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Colors.black12, Colors.black38])),
+                decoration: BoxDecoration(),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: widget.deviceSize.width * 0.03,
-                    ),
-                    TextButton.icon(
-                      onPressed: () async {
-                        showMoadl(context, widget.deviceSize, _setWallpaper);
-                      },
-                      icon: Icon(
-                        Icons.done,
-                        color: Colors.white,
-                        size: widget.deviceSize.width * 0.08,
+                    // SizedBox(
+                    //   width: widget.deviceSize.width * 0.03,
+                    // ),
+                    Container(
+                      width: widget.deviceSize.width * 0.4,
+                      padding: EdgeInsets.all(widget.deviceSize.width * 0.01),
+                      decoration: BoxDecoration(
+                        color: Colors.black54,
+                        borderRadius: BorderRadius.circular(
+                            widget.deviceSize.width * 0.05),
                       ),
-                      label: Text(
-                        "Set As Wallpaper",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: widget.deviceSize.width * 0.05),
+                      child: TextButton.icon(
+                        onPressed: () async {
+                          showMoadl(context, widget.deviceSize, _setWallpaper);
+                        },
+                        icon: Icon(
+                          Icons.done,
+                          color: Colors.white,
+                          size: widget.deviceSize.width * 0.08,
+                        ),
+                        label: Text(
+                          "Set As",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: widget.deviceSize.width * 0.05),
+                        ),
                       ),
                     ),
-                    SizedBox(
-                      width: widget.deviceSize.width * 0.28,
-                    ),
+                    // SizedBox(
+                    //   width: widget.deviceSize.width * 0.52,
+                    // ),
                     IconButton(
+                      padding: EdgeInsets.all(0),
                       onPressed: () {
                         if (isFav) {
                           return provider.deleteFav(
@@ -140,7 +150,7 @@ class _FunctionsWidgetState extends State<FunctionsWidget>
                             ? Icons.favorite_rounded
                             : Icons.favorite_border_rounded,
                         color: Colors.white,
-                        size: widget.deviceSize.width * 0.1,
+                        size: widget.deviceSize.width * 0.11,
                       ),
                     ),
                   ],

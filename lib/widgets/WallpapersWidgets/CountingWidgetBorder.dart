@@ -21,6 +21,7 @@ class CountingWidgetBorder extends StatelessWidget {
             style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'Hero',
+                fontWeight: FontWeight.bold,
                 fontSize: deviceSize.width * 0.045),
           ),
         ));

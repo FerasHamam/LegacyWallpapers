@@ -5,13 +5,15 @@ import 'package:provider/provider.dart';
 import 'TypeCard.dart';
 
 class TypePageView extends StatelessWidget {
+  final reload;
+  TypePageView(this.reload);
   //function to build cards
   List<Widget> companyCardWidget(List<String> types) {
     final List<Widget> _listOfTypes = [];
     types.forEach(
       (type) {
         _listOfTypes.add(
-          TypeCard(type),
+          TypeCard(type, reload),
         );
       },
     );

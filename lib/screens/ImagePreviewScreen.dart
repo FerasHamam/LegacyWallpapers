@@ -56,7 +56,7 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
                 width: deviceSize.width,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                     image: NetworkImage(url!),
                   ),
                 ),

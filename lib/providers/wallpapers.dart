@@ -86,7 +86,6 @@ class Wallpapers with ChangeNotifier {
     bool isFav = false;
     _fav.forEach(
       (fav) {
-        print('oui');
         if (fav['id'] == id) {
           isFav = true;
           return;
@@ -100,6 +99,11 @@ class Wallpapers with ChangeNotifier {
 
   //fetch data from cloud
   Future<void> fetchData() async {
+    //reset values to reload
+    _walls = {};
+    _fav = [];
+    currentIndex = 0;
+    //
     //fav
     List<Map<String, Object?>> favList = [];
     final path = await getApplicationDocumentsDirectory();
@@ -117,30 +121,36 @@ class Wallpapers with ChangeNotifier {
       _fav.add(item);
     });
     //
+    //fetching data from pixabay api
     if (_types.length > 0)
-      _types.forEach(
-        (type) async {
-          final response = await http.get(
-            Uri.parse(
-              'https://pixabay.com/api/?key=22575208-3109e2dc674cc85adb78b73af&q=$type+wallpaper&orientation=vertical&per_page=20min_width=1019&min_height=1080',
-            ),
-          );
-          final result = jsonDecode(response.body);
-          List<dynamic> hits = result['hits'];
-          hits.forEach(
-            (wallpaper) {
-              _walls.putIfAbsent(type, () => []);
-              _walls[type]?.add(
-                {
-                  'url': wallpaper['largeImageURL'] ?? "",
-                  'id': wallpaper['id'],
-                  'name': wallpaper['user'] ?? "",
-                },
-              );
-            },
-          );
-        },
-      );
+      try {
+        _types.forEach(
+          (type) async {
+            final response = await http.get(
+              Uri.parse(
+                'https://pixabay.com/api/?key=22575208-3109e2dc674cc85adb78b73af&q=$type+wallpaper&orientation=vertical&per_page=20min_width=1019&min_height=1080',
+              ),
+            );
+            final result = jsonDecode(response.body);
+            List<dynamic> hits = result['hits'];
+            hits.forEach(
+              (wallpaper) {
+                _walls.putIfAbsent(type, () => []);
+                _walls[type]?.add(
+                  {
+                    'url': wallpaper['largeImageURL'] ?? "",
+                    'id': wallpaper['id'],
+                    'name': wallpaper['user'] ?? "",
+                  },
+                );
+              },
+            );
+          },
+        );
+      } catch (error) {
+        print(error);
+        _walls = {};
+      }
     notifyListeners();
     await Future.delayed(Duration(seconds: 5), () {
       notifyListeners();

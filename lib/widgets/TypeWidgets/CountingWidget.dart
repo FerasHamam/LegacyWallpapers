@@ -7,11 +7,12 @@ class CountingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
     return Container(
-        height: deviceSize.height * 0.07,
-        width: deviceSize.width * 0.32,
+        padding: EdgeInsets.all(10),
+        height: deviceSize.height * 0.08,
+        width: deviceSize.width * 0.35,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
-          color: Colors.white,
+          color: Colors.black54,
           boxShadow: [
             BoxShadow(
               blurRadius: 4,
@@ -25,8 +26,9 @@ class CountingWidget extends StatelessWidget {
           child: Text(
             '$count Wallpapers',
             style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontFamily: 'Hero',
+                fontWeight: FontWeight.bold,
                 fontSize: deviceSize.width * 0.04),
           ),
         ));

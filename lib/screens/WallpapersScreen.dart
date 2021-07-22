@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:legacywallpapers/providers/wallpapers.dart';
+import 'package:legacywallpapers/screens/Initial.dart';
 import 'package:provider/provider.dart';
 //widgets
 import '../widgets/WallpapersWidgets/WallpaperCard.dart';
@@ -39,7 +40,17 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
           style: TextStyle(color: Colors.black54),
         ),
         centerTitle: true,
-        actions: [],
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacementNamed(Initial.name);
+              },
+              icon: Icon(
+                Icons.replay_sharp,
+                size: deviceSize.width * 0.09,
+                color: Colors.black54,
+              ))
+        ],
       ),
       body: CustomScrollView(
         slivers: [
