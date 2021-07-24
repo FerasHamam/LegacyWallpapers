@@ -6,10 +6,11 @@ class CountingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
+    EdgeInsets viewInsets = MediaQuery.of(context).viewInsets;
     return Container(
         padding: EdgeInsets.all(10),
         height: deviceSize.height * 0.08,
-        width: deviceSize.width * 0.35,
+        width: deviceSize.width * 0.4,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
           color: Colors.black54,
@@ -25,11 +26,14 @@ class CountingWidget extends StatelessWidget {
         child: Center(
           child: Text(
             '$count Wallpapers',
+            textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'Hero',
                 fontWeight: FontWeight.bold,
-                fontSize: deviceSize.width * 0.04),
+                fontSize:
+                    (deviceSize.width - viewInsets.left - viewInsets.right) *
+                        0.043),
           ),
         ));
   }

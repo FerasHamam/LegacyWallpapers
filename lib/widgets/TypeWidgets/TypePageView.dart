@@ -24,7 +24,6 @@ class TypePageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('oui');
     //initial values
     final PreloadPageController _controller =
         PreloadPageController(keepPage: true);
