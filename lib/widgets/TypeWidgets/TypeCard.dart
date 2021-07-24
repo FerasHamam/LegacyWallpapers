@@ -45,7 +45,6 @@ class TypeCard extends StatelessWidget {
               image: AssetImage('lib/assets/images/$name.jpg'),
               fit: BoxFit.cover),
           borderRadius: BorderRadius.circular(15),
-          color: Colors.blue,
           boxShadow: [
             BoxShadow(
               blurRadius: 4,

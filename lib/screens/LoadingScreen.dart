@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:legacywallpapers/providers/wallpapers.dart';
+import 'package:provider/provider.dart';
 
 class LoadingScreen extends StatelessWidget {
   @override
@@ -9,6 +11,11 @@ class LoadingScreen extends StatelessWidget {
         .textTheme!
         .headline6!
         .copyWith(fontWeight: FontWeight.bold);
+    Provider.of<Wallpapers>(context, listen: false).types.forEach(
+      (type) {
+        precacheImage(AssetImage("lib/assets/images/$type.jpg"), context);
+      },
+    );
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(

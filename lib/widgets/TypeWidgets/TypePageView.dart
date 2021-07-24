@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:legacywallpapers/providers/wallpapers.dart';
 import 'package:provider/provider.dart';
+import 'package:preload_page_view/preload_page_view.dart';
 //widgets
 import 'TypeCard.dart';
 
@@ -23,12 +24,14 @@ class TypePageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('oui');
     //initial values
-    final PageController _controller = PageController();
+    final PreloadPageController _controller =
+        PreloadPageController(keepPage: true);
     final types = Provider.of<Wallpapers>(context, listen: false).types;
     //
-
-    return PageView(
+    return PreloadPageView(
+      preloadPagesCount: 5,
       controller: _controller,
       scrollDirection: Axis.horizontal,
       children: companyCardWidget(types),
