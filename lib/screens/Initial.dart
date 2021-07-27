@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:legacywallpapers/providers/wallpapers.dart';
 import 'package:provider/provider.dart';
 
 //providers

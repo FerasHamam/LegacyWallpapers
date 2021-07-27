@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:legacywallpapers/providers/wallpapers.dart';
-import 'package:legacywallpapers/screens/Initial.dart';
+import '../providers/wallpapers.dart';
+import '../screens/Initial.dart';
 import 'package:provider/provider.dart';
 //widgets
 import '../widgets/WallpapersWidgets/WallpaperCard.dart';

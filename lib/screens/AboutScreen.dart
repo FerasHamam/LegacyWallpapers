@@ -25,7 +25,7 @@ class AboutScreen extends StatelessWidget {
               'ABOUT',
               style: TextStyle(
                   fontFamily: 'Infinity',
-                  fontSize: deviceSize.width * 0.12,
+                  fontSize: deviceSize.height * 0.065,
                   fontWeight: FontWeight.w600),
             ),
             Divider(
@@ -40,7 +40,7 @@ class AboutScreen extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     fontFamily: 'Hero',
-                    fontSize: deviceSize.width * 0.05,
+                    fontSize: deviceSize.height * 0.025,
                     fontWeight: FontWeight.w500),
               ),
             ),
@@ -52,7 +52,7 @@ class AboutScreen extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     fontFamily: 'Hero',
-                    fontSize: deviceSize.width * 0.05,
+                    fontSize: deviceSize.height * 0.025,
                     fontWeight: FontWeight.w500),
               ),
             ),
@@ -60,11 +60,11 @@ class AboutScreen extends StatelessWidget {
               margin: EdgeInsets.all(deviceSize.height * 0.025),
               width: deviceSize.width,
               child: Text(
-                '3- This is my first app so, it may or\n may not have miner bugs. Please\n contact me if you found any !',
+                '3- This is my first app so, it may or\n may not have miner bugs. Please\n contact me if you find any !',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     fontFamily: 'Hero',
-                    fontSize: deviceSize.width * 0.05,
+                    fontSize: deviceSize.height * 0.025,
                     fontWeight: FontWeight.w500),
               ),
             ),
@@ -72,7 +72,7 @@ class AboutScreen extends StatelessWidget {
               'Contact',
               style: TextStyle(
                   fontFamily: 'Infinity',
-                  fontSize: deviceSize.width * 0.12,
+                  fontSize: deviceSize.height * 0.065,
                   fontWeight: FontWeight.w600),
             ),
             Divider(
@@ -87,7 +87,7 @@ class AboutScreen extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     fontFamily: 'Hero',
-                    fontSize: deviceSize.width * 0.06,
+                    fontSize: deviceSize.height * 0.03,
                     fontWeight: FontWeight.w500),
               ),
             ),

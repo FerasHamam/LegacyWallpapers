@@ -1,17 +1,24 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:legacywallpapers/screens/AboutScreen.dart';
 //providers
 import 'package:provider/provider.dart';
 import 'providers/wallpapers.dart';
 //screens
+import 'screens/AboutScreen.dart';
+import 'screens/FavoriteScreen.dart';
+import 'screens/ImagePreviewScreen.dart';
+import 'screens/Initial.dart';
 import 'screens/TypesScreen.dart';
 import 'screens/WallpapersScreen.dart';
-import 'screens/Initial.dart';
-import 'screens/ImagePreviewScreen.dart';
-import 'screens/FavoriteScreen.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(MyApp());
 }
 

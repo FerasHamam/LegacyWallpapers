@@ -26,7 +26,7 @@ class _AnimatedTextState extends State<AnimatedText>
     _animOpacity = Tween<double>(begin: 0, end: 0.8).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOutCirc),
     );
-    _animPosition = Tween<Offset>(begin: Offset(0, -0.1), end: Offset.zero)
+    _animPosition = Tween<Offset>(begin: Offset(0, -0.12), end: Offset.zero)
         .animate(
             CurvedAnimation(parent: _controller, curve: Curves.easeInOutCirc));
     _controller.forward();
@@ -62,7 +62,7 @@ class _AnimatedTextState extends State<AnimatedText>
               widget.text.toUpperCase(),
               key: GlobalKey(),
               style: TextStyle(
-                  fontSize: deviceSize.width * 0.2,
+                  fontSize: deviceSize.height * 0.105,
                   color: Colors.white,
                   fontWeight: FontWeight.w800),
             ),

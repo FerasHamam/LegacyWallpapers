@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:legacywallpapers/providers/wallpapers.dart';
-import 'package:legacywallpapers/widgets/ImagePreviewWidgets/modalSheet.dart';
+import './modalSheet.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:wallpaper_manager/wallpaper_manager.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'dart:io';
 
+// ignore: must_be_immutable
 class FunctionsWidget extends StatefulWidget {
   final Size deviceSize;
-  final bool _showAppBar;
+  bool _showAppBar;
   final String url;
   final int id;
   final String user;
@@ -70,9 +72,48 @@ class _FunctionsWidgetState extends State<FunctionsWidget>
     // ignore: unused_local_variable
     String result =
         await WallpaperManager.setWallpaperFromFile(file.path, location);
+
     setState(() {
       _isLoading = false;
+      widget._showAppBar = false;
     });
+
+    _showSnackBar(result);
+    await Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        widget._showAppBar = true;
+      });
+    });
+  }
+
+  _showSnackBar(String result) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          result,
+          textAlign: TextAlign.center,
+        ),
+        animation: _animOpacity,
+        duration: Duration(milliseconds: 2500),
+        elevation: 5,
+        backgroundColor: Colors.black54,
+      ),
+    );
+  }
+
+  Future<void> _downloadWallpaper() async {
+    setState(() {
+      widget._showAppBar = false;
+    });
+    _showSnackBar('Downloading Image');
+    await Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        widget._showAppBar = true;
+      });
+    });
+    File file = await DefaultCacheManager().getSingleFile(widget.url);
+    final result = await ImageGallerySaver.saveFile(file.path);
+    print(result);
   }
 
   @override
@@ -90,73 +131,85 @@ class _FunctionsWidgetState extends State<FunctionsWidget>
                   strokeWidth: 5,
                 )),
           )
-        : Positioned(
-            top: widget.deviceSize.height * 0.92,
-            child: FadeTransition(
-              opacity: _animOpacity,
-              child: Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: widget.deviceSize.width * 0.02),
-                alignment: Alignment.center,
-                height: widget.deviceSize.height * 0.08,
-                width: widget.deviceSize.width,
-                decoration: BoxDecoration(),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // SizedBox(
-                    //   width: widget.deviceSize.width * 0.03,
-                    // ),
-                    Container(
-                      width: widget.deviceSize.width * 0.4,
-                      padding: EdgeInsets.all(widget.deviceSize.width * 0.01),
-                      decoration: BoxDecoration(
-                        color: Colors.black54,
-                        borderRadius: BorderRadius.circular(
-                            widget.deviceSize.width * 0.05),
+        : widget._showAppBar
+            ? FadeTransition(
+                opacity: _animOpacity,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius:
+                        BorderRadius.circular(widget.deviceSize.width * 0.05),
+                  ),
+                  margin: EdgeInsets.only(
+                      top: widget.deviceSize.height * .9,
+                      right: widget.deviceSize.width * 0.02,
+                      left: widget.deviceSize.width * 0.02),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: widget.deviceSize.width * 0.02),
+                  alignment: Alignment.center,
+                  height: widget.deviceSize.height * 0.08,
+                  width: widget.deviceSize.width,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: widget.deviceSize.width * 0.4,
+                        padding: EdgeInsets.all(widget.deviceSize.width * 0.01),
+                        alignment: Alignment.centerLeft,
+                        child: TextButton.icon(
+                          onPressed: () async {
+                            showMoadl(
+                                context, widget.deviceSize, _setWallpaper);
+                          },
+                          icon: Icon(
+                            Icons.done,
+                            color: Colors.white,
+                            size: widget.deviceSize.width * 0.1,
+                          ),
+                          label: Text(
+                            "Set As",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: widget.deviceSize.width * 0.055),
+                          ),
+                        ),
                       ),
-                      child: TextButton.icon(
-                        onPressed: () async {
-                          showMoadl(context, widget.deviceSize, _setWallpaper);
+                      SizedBox(
+                        width: widget.deviceSize.width * 0.25,
+                      ),
+                      IconButton(
+                        padding: EdgeInsets.all(0),
+                        onPressed: () {
+                          _downloadWallpaper();
                         },
                         icon: Icon(
-                          Icons.done,
+                          Icons.download_rounded,
                           color: Colors.white,
-                          size: widget.deviceSize.width * 0.08,
-                        ),
-                        label: Text(
-                          "Set As",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: widget.deviceSize.width * 0.05),
+                          size: widget.deviceSize.width * 0.11,
                         ),
                       ),
-                    ),
-                    // SizedBox(
-                    //   width: widget.deviceSize.width * 0.52,
-                    // ),
-                    IconButton(
-                      padding: EdgeInsets.all(0),
-                      onPressed: () {
-                        if (isFav) {
-                          return provider.deleteFav(
-                              widget.url, widget.id, widget.user);
-                        }
-                        provider.setFav(widget.url, widget.id, widget.user);
-                      },
-                      icon: Icon(
-                        isFav
-                            ? Icons.favorite_rounded
-                            : Icons.favorite_border_rounded,
-                        color: Colors.white,
-                        size: widget.deviceSize.width * 0.11,
+                      IconButton(
+                        padding: EdgeInsets.all(0),
+                        onPressed: () {
+                          if (isFav) {
+                            return provider.deleteFav(
+                                widget.url, widget.id, widget.user);
+                          }
+                          provider.setFav(widget.url, widget.id, widget.user);
+                        },
+                        icon: Icon(
+                          isFav
+                              ? Icons.favorite_rounded
+                              : Icons.favorite_border_rounded,
+                          color: Colors.white,
+                          size: widget.deviceSize.width * 0.11,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ),
-          );
+              )
+            : SizedBox();
   }
 }

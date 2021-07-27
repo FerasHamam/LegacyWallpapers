@@ -25,6 +25,7 @@ void showMoadl(
                 TextButton.icon(
                   onPressed: () {
                     Navigator.of(context).pop();
+
                     setWallpaper('home');
                   },
                   icon: Icon(
@@ -37,9 +38,13 @@ void showMoadl(
                     textAlign: TextAlign.center,
                   ),
                 ),
-                Divider(
-                  color: Colors.white,
-                  thickness: 1,
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: deviceSize.width * 0.2),
+                  child: Divider(
+                    color: Colors.white,
+                    thickness: 1,
+                  ),
                 ),
                 TextButton.icon(
                   onPressed: () {
@@ -56,9 +61,13 @@ void showMoadl(
                     textAlign: TextAlign.center,
                   ),
                 ),
-                Divider(
-                  color: Colors.white,
-                  thickness: 1.1,
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: deviceSize.width * 0.2),
+                  child: Divider(
+                    color: Colors.white,
+                    thickness: 1,
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
@@ -69,6 +78,14 @@ void showMoadl(
                     'Both',
                     style: styleForModal,
                     textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: deviceSize.width * 0.2),
+                  child: Divider(
+                    color: Colors.white,
+                    thickness: 1,
                   ),
                 ),
               ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:legacywallpapers/providers/wallpapers.dart';
+import '../providers/wallpapers.dart';
 import 'package:provider/provider.dart';
 
 class LoadingScreen extends StatelessWidget {
