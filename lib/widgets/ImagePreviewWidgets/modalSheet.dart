@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void showMoadl(
   BuildContext context,
@@ -17,8 +18,19 @@ void showMoadl(
               horizontal: deviceSize.width * 0.1,
               vertical: deviceSize.height * 0.15),
           height: deviceSize.height,
-          child: Card(
-            color: Colors.black54,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.black54,
+              borderRadius: BorderRadius.circular(50),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  spreadRadius: 4,
+                  color: Colors.black12,
+                  offset: const Offset(0, 0),
+                ),
+              ],
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -43,7 +55,7 @@ void showMoadl(
                       EdgeInsets.symmetric(horizontal: deviceSize.width * 0.2),
                   child: Divider(
                     color: Colors.white,
-                    thickness: 1,
+                    thickness: 2,
                   ),
                 ),
                 TextButton.icon(
@@ -66,7 +78,7 @@ void showMoadl(
                       EdgeInsets.symmetric(horizontal: deviceSize.width * 0.2),
                   child: Divider(
                     color: Colors.white,
-                    thickness: 1,
+                    thickness: 2,
                   ),
                 ),
                 TextButton(
@@ -76,16 +88,17 @@ void showMoadl(
                   },
                   child: Text(
                     'Both',
-                    style: styleForModal,
+                    style: TextStyle(fontSize: 76.sp, color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: deviceSize.width * 0.2),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: deviceSize.width * 0.2,
+                      vertical: deviceSize.height * 0.001),
                   child: Divider(
                     color: Colors.white,
-                    thickness: 1,
+                    thickness: 2,
                   ),
                 ),
               ],

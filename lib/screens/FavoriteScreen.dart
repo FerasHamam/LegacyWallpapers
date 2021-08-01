@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 //providers
 import '../providers/wallpapers.dart';
 //widgets
@@ -15,7 +16,7 @@ class FavoriteScreen extends StatelessWidget {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_sharp,
-            size: deviceSize.width * 0.09,
+            size: 110.sp,
             color: Colors.black54,
           ),
           onPressed: () {
@@ -28,7 +29,7 @@ class FavoriteScreen extends StatelessWidget {
               .appBarTheme
               .textTheme!
               .headline6!
-              .copyWith(color: Colors.black54),
+              .copyWith(color: Colors.black54, fontSize: 110.sp),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -39,9 +40,9 @@ class FavoriteScreen extends StatelessWidget {
         child: Consumer<Wallpapers>(builder: (ctx, wallpapers, _) {
           return GridView.builder(
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              childAspectRatio: 10 / 20,
-              mainAxisExtent: deviceSize.height * 0.4,
-              maxCrossAxisExtent: deviceSize.width * 0.5,
+              childAspectRatio: 9 / 20,
+              mainAxisExtent: 1000.sp,
+              maxCrossAxisExtent: 800.sp,
             ),
             itemBuilder: (ctx, index) {
               return WallpaperCard(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../providers/wallpapers.dart';
 import '../screens/Initial.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 //widgets
 import '../widgets/WallpapersWidgets/WallpaperCard.dart';
 import '../widgets/WallpapersWidgets/CountingWidgetBorder.dart';
@@ -27,7 +28,7 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_sharp,
-            size: deviceSize.width * 0.09,
+            size: 110.sp,
             color: Colors.black54,
           ),
           onPressed: () {
@@ -37,7 +38,7 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
         backgroundColor: Colors.white,
         title: Text(
           _currentTypeName.toUpperCase(),
-          style: TextStyle(color: Colors.black54),
+          style: TextStyle(color: Colors.black54, fontSize: 110.sp),
         ),
         centerTitle: true,
         actions: [
@@ -47,7 +48,7 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
               },
               icon: Icon(
                 Icons.replay_sharp,
-                size: deviceSize.width * 0.09,
+                size: 110.sp,
                 color: Colors.black54,
               ))
         ],
@@ -87,8 +88,8 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
             ),
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               childAspectRatio: 9 / 20,
-              mainAxisExtent: deviceSize.height * 0.4,
-              maxCrossAxisExtent: deviceSize.width * 0.6,
+              mainAxisExtent: 1000.sp,
+              maxCrossAxisExtent: 700.sp,
             ),
           ),
         ],

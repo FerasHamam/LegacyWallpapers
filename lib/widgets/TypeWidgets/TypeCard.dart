@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:legacywallpapers/providers/wallpapers.dart';
 import 'package:legacywallpapers/screens/Initial.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 //screens
 import '../../screens/WallpapersScreen.dart';
 //widget
@@ -29,7 +30,7 @@ class TypeCard extends StatelessWidget {
               ? CountingWidget(provider == null ? 0 : provider.length)
               : IconButton(
                   padding: EdgeInsets.only(
-                      right: deviceSize.width * 0.15,
+                      right: deviceSize.width * 0.12,
                       bottom: deviceSize.height * 0.3),
                   onPressed: () {
                     Navigator.of(context).pushReplacementNamed(Initial.name);
@@ -44,22 +45,18 @@ class TypeCard extends StatelessWidget {
           image: DecorationImage(
               image: AssetImage('lib/assets/images/$name.jpg'),
               fit: BoxFit.cover),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(30.sp),
           boxShadow: [
             BoxShadow(
-              blurRadius: 4,
-              spreadRadius: 4,
-              color: Colors.black12,
+              blurRadius: 10.sp,
+              spreadRadius: 2.sp,
+              color: Colors.black45,
               offset: const Offset(0, 0),
             ),
           ],
         ),
         margin: EdgeInsets.only(
-          top: deviceSize.height * 0.04,
-          right: deviceSize.width * 0.12,
-          left: deviceSize.width * 0.12,
-          bottom: deviceSize.height * 0.03,
-        ),
+            top: 100.sp, right: 125.sp, left: 125.sp, bottom: 50.sp),
       ),
     );
   }

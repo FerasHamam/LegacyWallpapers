@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:legacywallpapers/screens/AboutScreen.dart';
 //providers
 import 'package:provider/provider.dart';
@@ -25,39 +26,42 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(
-          value: Wallpapers(),
-        ),
-      ],
-      builder: (ctx, _) => MaterialApp(
-        title: 'LEGACY WALLPAPERS',
-        theme: ThemeData(
-          primarySwatch: Colors.grey,
-          accentColor: Colors.white,
-          textTheme: TextTheme(
-            bodyText2: TextStyle(fontFamily: 'Infinity', color: Colors.white),
+    return ScreenUtilInit(
+      designSize: Size(1080, 2400),
+      builder: () => MultiProvider(
+        providers: [
+          ChangeNotifierProvider.value(
+            value: Wallpapers(),
           ),
-          appBarTheme: AppBarTheme(
+        ],
+        builder: (ctx, _) => MaterialApp(
+          title: 'LEGACY WALLPAPERS',
+          theme: ThemeData(
+            primarySwatch: Colors.grey,
+            accentColor: Colors.white,
             textTheme: TextTheme(
-              headline6: TextStyle(
-                  fontFamily: 'Simplifica',
-                  fontSize: 35,
-                  color: Color(0xCCffffff),
-                  fontWeight: FontWeight.bold),
+              bodyText2: TextStyle(fontFamily: 'Infinity', color: Colors.white),
+            ),
+            appBarTheme: AppBarTheme(
+              textTheme: TextTheme(
+                headline6: TextStyle(
+                    fontFamily: 'Simplifica',
+                    fontSize: 35,
+                    color: Color(0xCCffffff),
+                    fontWeight: FontWeight.bold),
+              ),
             ),
           ),
+          home: Initial(),
+          routes: {
+            TypesScreen.name: (ctx) => TypesScreen(),
+            WallpapersScreen.name: (ctx) => WallpapersScreen(),
+            ImagePreviewScreen.name: (ctx) => ImagePreviewScreen(),
+            FavoriteScreen.name: (ctx) => FavoriteScreen(),
+            AboutScreen.name: (ctx) => AboutScreen(),
+            Initial.name: (ctx) => Initial(),
+          },
         ),
-        home: Initial(),
-        routes: {
-          TypesScreen.name: (ctx) => TypesScreen(),
-          WallpapersScreen.name: (ctx) => WallpapersScreen(),
-          ImagePreviewScreen.name: (ctx) => ImagePreviewScreen(),
-          FavoriteScreen.name: (ctx) => FavoriteScreen(),
-          AboutScreen.name: (ctx) => AboutScreen(),
-          Initial.name: (ctx) => Initial(),
-        },
       ),
     );
   }

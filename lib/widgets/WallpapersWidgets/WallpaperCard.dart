@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:legacywallpapers/providers/wallpapers.dart';
 import 'package:provider/provider.dart';
 import 'package:legacywallpapers/items/colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 //screens
 import '../../screens/ImagePreviewScreen.dart';
 
@@ -22,7 +23,7 @@ class WallpaperCard extends StatelessWidget {
             arguments: {"url": url, "id": id, "user": user});
       },
       child: Container(
-        margin: EdgeInsets.all(deviceSize.width * 0.04),
+        margin: EdgeInsets.all(25.sp),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Colors.transparent,

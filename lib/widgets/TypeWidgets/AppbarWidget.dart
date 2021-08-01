@@ -1,4 +1,7 @@
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 //screens
 import 'package:legacywallpapers/screens/AboutScreen.dart';
 import 'package:legacywallpapers/screens/FavoriteScreen.dart';
@@ -14,6 +17,7 @@ class AppbarWidget extends StatelessWidget {
         top: deviceSize.width * 0.025,
         right: deviceSize.width * 0.02,
         left: deviceSize.width * 0.02,
+        bottom: 0,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -23,34 +27,35 @@ class AppbarWidget extends StatelessWidget {
             padding: EdgeInsets.only(bottom: deviceSize.height * 0.05),
             alignment: Alignment.center,
             icon: Icon(Icons.details_sharp,
-                color: Color(0xccffffff), size: deviceSize.height * 0.054),
+                color: Color(0xccffffff), size: 125.sp),
             onPressed: () {
               Navigator.of(context).pushNamed(AboutScreen.name);
             },
           ),
           SizedBox(
-            width: deviceSize.width * 0.1,
+            width: deviceSize.width * 0.18,
           ),
           Container(
-            width: deviceSize.width * 0.51,
+            width: deviceSize.width * 0.35,
             height: deviceSize.height * 0.06,
             alignment: Alignment.center,
-            child: Text(
+            child: AutoSizeText(
               'L E G A C Y',
+              maxLines: 1,
               style:
                   Theme.of(context).appBarTheme.textTheme!.headline6!.copyWith(
-                        fontSize: deviceSize.height * 0.055,
+                        fontSize: 200.sp,
                       ),
             ),
           ),
           SizedBox(
-            width: deviceSize.width * 0.1,
+            width: deviceSize.width * 0.18,
           ),
           IconButton(
             padding: EdgeInsets.only(bottom: deviceSize.height * 0.05),
             alignment: Alignment.center,
             icon: Icon(Icons.favorite_border_sharp,
-                color: Color(0xccffffff), size: deviceSize.height * 0.054),
+                color: Color(0xccffffff), size: 125.sp),
             onPressed: () {
               Navigator.of(context).pushNamed(FavoriteScreen.name);
             },

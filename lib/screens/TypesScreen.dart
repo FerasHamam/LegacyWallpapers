@@ -9,6 +9,7 @@ import '../items/colors.dart';
 import '../widgets/TypeWidgets/TypePageView.dart';
 import '../widgets/TypeWidgets/TypeName.dart';
 import '../widgets/TypeWidgets/AppbarWidget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TypesScreen extends StatefulWidget {
   static String name = 'TypesScreen';
@@ -78,8 +79,8 @@ class _TypesScreenState extends State<TypesScreen>
             ),
             AppbarWidget(),
             Divider(
-              height: deviceSize.height * 0.001,
-              thickness: 2,
+              height: 2.sp,
+              thickness: 4.sp,
               color: const Color(0x77ffffff),
             ),
             SizedBox(
@@ -87,8 +88,12 @@ class _TypesScreenState extends State<TypesScreen>
             ),
             Consumer<Wallpapers>(
               builder: (ctx, provider, _) {
+                final typeName = provider.types[provider.currentIndex];
                 return Container(
-                  child: AnimatedText(provider.types[provider.currentIndex]),
+                  alignment: Alignment.center,
+                  width: (typeName.length * 100).w,
+                  height: 260.h,
+                  child: AnimatedText(typeName),
                 );
               },
             ),

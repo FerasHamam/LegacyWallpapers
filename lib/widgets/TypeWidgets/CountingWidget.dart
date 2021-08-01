@@ -1,16 +1,17 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CountingWidget extends StatelessWidget {
   final int count;
   CountingWidget(this.count);
   @override
   Widget build(BuildContext context) {
-    Size deviceSize = MediaQuery.of(context).size;
     return Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.all(10),
-        height: deviceSize.height * 0.082,
-        width: deviceSize.width * 0.48,
+        height: 185.h,
+        width: 450.w,
+        padding: EdgeInsets.all(24.sp),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
           color: Colors.black54,
@@ -23,14 +24,15 @@ class CountingWidget extends StatelessWidget {
             ),
           ],
         ),
-        child: Text(
+        child: AutoSizeText(
           '$count Wallpapers',
+          maxLines: 1,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'Hero',
             fontWeight: FontWeight.bold,
-            fontSize: deviceSize.height * 0.024,
+            fontSize: 60.sp,
           ),
         ));
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class AnimatedText extends StatefulWidget {
   final String text;
@@ -26,7 +28,7 @@ class _AnimatedTextState extends State<AnimatedText>
     _animOpacity = Tween<double>(begin: 0, end: 0.8).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOutCirc),
     );
-    _animPosition = Tween<Offset>(begin: Offset(0, -0.12), end: Offset.zero)
+    _animPosition = Tween<Offset>(begin: Offset(0, -0.2), end: Offset.zero)
         .animate(
             CurvedAnimation(parent: _controller, curve: Curves.easeInOutCirc));
     _controller.forward();
@@ -50,7 +52,6 @@ class _AnimatedTextState extends State<AnimatedText>
 
   @override
   Widget build(BuildContext context) {
-    Size deviceSize = MediaQuery.of(context).size;
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, _) {
@@ -58,11 +59,12 @@ class _AnimatedTextState extends State<AnimatedText>
           opacity: _animOpacity,
           child: SlideTransition(
             position: _animPosition,
-            child: Text(
+            child: AutoSizeText(
               widget.text.toUpperCase(),
+              maxLines: 1,
               key: GlobalKey(),
               style: TextStyle(
-                  fontSize: deviceSize.height * 0.105,
+                  fontSize: 300.sp,
                   color: Colors.white,
                   fontWeight: FontWeight.w800),
             ),
