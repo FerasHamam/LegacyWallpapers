@@ -12,33 +12,32 @@ class AppbarWidget extends StatelessWidget {
     Size deviceSize = MediaQuery.of(context).size;
     return Container(
       width: deviceSize.width,
-      height: deviceSize.height * 0.06,
+      height: deviceSize.height * 0.05,
+      alignment: Alignment.bottomCenter,
       margin: EdgeInsets.only(
-        top: deviceSize.width * 0.025,
-        right: deviceSize.width * 0.02,
-        left: deviceSize.width * 0.02,
-        bottom: 0,
+        top: (deviceSize.height * 0.03).h,
+        right: (deviceSize.width * 0.02).w,
+        left: (deviceSize.width * 0.02).w,
+        bottom: (deviceSize.height * 0.01).h,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           IconButton(
-            padding: EdgeInsets.only(bottom: deviceSize.height * 0.05),
-            alignment: Alignment.center,
+            padding: EdgeInsets.only(bottom: 265.sp),
             icon: Icon(Icons.details_sharp,
-                color: Color(0xccffffff), size: 125.sp),
+                color: Color(0xccffffff), size: 110.sp),
             onPressed: () {
               Navigator.of(context).pushNamed(AboutScreen.name);
             },
           ),
           SizedBox(
-            width: deviceSize.width * 0.18,
+            width: (deviceSize.width * 0.55).w,
           ),
           Container(
-            width: deviceSize.width * 0.35,
-            height: deviceSize.height * 0.06,
-            alignment: Alignment.center,
+            alignment: Alignment.bottomCenter,
+            width: (deviceSize.width * 0.32),
+            height: (deviceSize.height * 0.15).h,
             child: AutoSizeText(
               'L E G A C Y',
               maxLines: 1,
@@ -49,13 +48,12 @@ class AppbarWidget extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: deviceSize.width * 0.18,
+            width: (deviceSize.width * 0.55).w,
           ),
           IconButton(
-            padding: EdgeInsets.only(bottom: deviceSize.height * 0.05),
-            alignment: Alignment.center,
+            padding: EdgeInsets.only(bottom: 265.sp),
             icon: Icon(Icons.favorite_border_sharp,
-                color: Color(0xccffffff), size: 125.sp),
+                color: Color(0xccffffff), size: 110.sp),
             onPressed: () {
               Navigator.of(context).pushNamed(FavoriteScreen.name);
             },

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:auto_size_text/auto_size_text.dart';
 //providers
 import '../providers/wallpapers.dart';
 //widgets
@@ -13,23 +15,30 @@ class FavoriteScreen extends StatelessWidget {
     Size deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: deviceSize.height * 0.06,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_sharp,
-            size: 110.sp,
+            size: 100.sp,
             color: Colors.black54,
           ),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
-        title: Text(
-          'Your Favorites',
-          style: Theme.of(context)
-              .appBarTheme
-              .textTheme!
-              .headline6!
-              .copyWith(color: Colors.black54, fontSize: 110.sp),
+        title: Container(
+          alignment: Alignment.center,
+          width: 400.w,
+          height: (deviceSize.height * 0.15).h,
+          child: AutoSizeText(
+            'Your Favorites',
+            style: Theme.of(context)
+                .appBarTheme
+                .textTheme!
+                .headline6!
+                .copyWith(color: Colors.black54, fontSize: 120.sp),
+            maxLines: 1,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,

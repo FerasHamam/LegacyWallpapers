@@ -16,6 +16,9 @@ import 'screens/WallpapersScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(systemNavigationBarColor: Colors.black),
+  );
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -46,7 +49,7 @@ class MyApp extends StatelessWidget {
               textTheme: TextTheme(
                 headline6: TextStyle(
                     fontFamily: 'Simplifica',
-                    fontSize: 35,
+                    fontSize: 30.sp,
                     color: Color(0xCCffffff),
                     fontWeight: FontWeight.bold),
               ),

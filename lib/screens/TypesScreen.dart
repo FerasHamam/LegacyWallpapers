@@ -1,6 +1,7 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
 //providers
 import '../providers/wallpapers.dart';
 //items
@@ -81,7 +82,7 @@ class _TypesScreenState extends State<TypesScreen>
             Divider(
               height: 2.sp,
               thickness: 4.sp,
-              color: const Color(0x77ffffff),
+              color: const Color(0x99ffffff),
             ),
             SizedBox(
               height: deviceSize.height * 0.05,

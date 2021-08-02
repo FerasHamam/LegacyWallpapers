@@ -10,7 +10,7 @@ class LoadingScreen extends StatelessWidget {
         .appBarTheme
         .textTheme!
         .headline6!
-        .copyWith(fontWeight: FontWeight.bold);
+        .copyWith(fontWeight: FontWeight.bold, fontSize: 35);
     Provider.of<Wallpapers>(context, listen: false).types.forEach(
       (type) {
         precacheImage(AssetImage("lib/assets/images/$type.jpg"), context);

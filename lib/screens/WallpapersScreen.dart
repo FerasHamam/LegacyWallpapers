@@ -1,3 +1,5 @@
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import '../providers/wallpapers.dart';
 import '../screens/Initial.dart';
@@ -25,10 +27,11 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: deviceSize.height * 0.06,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_sharp,
-            size: 110.sp,
+            size: 100.sp,
             color: Colors.black54,
           ),
           onPressed: () {
@@ -36,9 +39,15 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
           },
         ),
         backgroundColor: Colors.white,
-        title: Text(
-          _currentTypeName.toUpperCase(),
-          style: TextStyle(color: Colors.black54, fontSize: 110.sp),
+        title: Container(
+          alignment: Alignment.center,
+          width: (_currentTypeName.length * 40).w,
+          height: (deviceSize.height * 0.14).h,
+          child: AutoSizeText(
+            _currentTypeName.toUpperCase(),
+            style: TextStyle(color: Colors.black54, fontSize: 110.sp),
+            maxLines: 1,
+          ),
         ),
         centerTitle: true,
         actions: [
@@ -48,7 +57,7 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
               },
               icon: Icon(
                 Icons.replay_sharp,
-                size: 110.sp,
+                size: 100.sp,
                 color: Colors.black54,
               ))
         ],
@@ -61,6 +70,7 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
             centerTitle: true,
             expandedHeight: deviceSize.height * 0.2,
             flexibleSpace: Container(
+              height: deviceSize.height * 0.2,
               padding: EdgeInsets.only(
                   top: deviceSize.height * 0.07,
                   bottom: deviceSize.height * 0.07,
