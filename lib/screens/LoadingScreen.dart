@@ -13,7 +13,8 @@ class LoadingScreen extends StatelessWidget {
         .copyWith(fontWeight: FontWeight.bold, fontSize: 35);
     Provider.of<Wallpapers>(context, listen: false).types.forEach(
       (type) {
-        precacheImage(AssetImage("lib/assets/images/$type.jpg"), context);
+        precacheImage(
+            AssetImage("lib/assets/images/${type.keys.first}.jpg"), context);
       },
     );
     return Scaffold(

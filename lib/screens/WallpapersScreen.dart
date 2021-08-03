@@ -21,7 +21,7 @@ class _WallpapersScreenState extends State<WallpapersScreen> {
     final provider = Provider.of<Wallpapers>(context, listen: false);
     Size deviceSize = MediaQuery.of(context).size;
     final _index = provider.currentIndex;
-    final String _currentTypeName = provider.types[_index];
+    final String _currentTypeName = provider.types[_index].keys.first;
     final List<Map<String, Object>> wallpapers =
         Provider.of<Wallpapers>(context).walls[_currentTypeName] ?? [];
 

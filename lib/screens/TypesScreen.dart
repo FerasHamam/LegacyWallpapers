@@ -1,7 +1,6 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/services.dart';
 //providers
 import '../providers/wallpapers.dart';
 //items
@@ -89,7 +88,8 @@ class _TypesScreenState extends State<TypesScreen>
             ),
             Consumer<Wallpapers>(
               builder: (ctx, provider, _) {
-                final typeName = provider.types[provider.currentIndex];
+                final typeName =
+                    provider.types[provider.currentIndex].keys.first;
                 return Container(
                   alignment: Alignment.center,
                   width: (typeName.length * 100).w,

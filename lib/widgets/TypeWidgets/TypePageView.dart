@@ -9,12 +9,12 @@ class TypePageView extends StatelessWidget {
   final reload;
   TypePageView(this.reload);
   //function to build cards
-  List<Widget> companyCardWidget(List<String> types) {
+  List<Widget> companyCardWidget(List<Map<String, String>> types) {
     final List<Widget> _listOfTypes = [];
     types.forEach(
       (type) {
         _listOfTypes.add(
-          TypeCard(type, reload),
+          TypeCard(type.keys.first, reload),
         );
       },
     );

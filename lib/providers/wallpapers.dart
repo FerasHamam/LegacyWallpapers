@@ -8,19 +8,20 @@ import 'package:path_provider/path_provider.dart';
 
 class Wallpapers with ChangeNotifier {
   //types for types screen => prepare
-  List<String> _types = [
-    'abstract',
-    'ocean',
-    'forest',
-    'mountain',
-    'fantasy',
-    'animal',
-    'car',
-    'city',
-    'sci fi',
+  List<Map<String, String>> _types = [
+    {'abstract': 'abstract wallpapers'},
+    {'graffiti': 'graffiti and street art'},
+    {'ocean': 'ocean wallpapers'},
+    {'city': 'city wallpapers'},
+    {'forest': 'forest wallpapers'},
+    {'mountain': 'mountain'},
+    {'fantasy': 'fantasy'},
+    {'animal': 'animals jungle'},
+    {'car': 'racing car'},
+    {'space': 'space wallpapers'},
   ];
 
-  List<String> get types {
+  List<Map<String, String>> get types {
     return [..._types];
   }
 
@@ -126,17 +127,18 @@ class Wallpapers with ChangeNotifier {
       try {
         _types.forEach(
           (type) async {
+            String lookingFor = type.values.first;
             final response = await http.get(
               Uri.parse(
-                'https://pixabay.com/api/?key=22575208-3109e2dc674cc85adb78b73af&q=$type+wallpaper&orientation=vertical&per_page=20min_width=1019&min_height=1080',
+                'https://pixabay.com/api/?key=22575208-3109e2dc674cc85adb78b73af&q=$lookingFor&orientation=vertical&per_page=20min_width=1019&min_height=1080',
               ),
             );
             final result = jsonDecode(response.body);
             List<dynamic> hits = result['hits'];
             hits.forEach(
               (wallpaper) {
-                _walls.putIfAbsent(type, () => []);
-                _walls[type]?.add(
+                _walls.putIfAbsent(type.keys.first, () => []);
+                _walls[type.keys.first]?.add(
                   {
                     'url': wallpaper['largeImageURL'] ?? "",
                     'id': wallpaper['id'],
