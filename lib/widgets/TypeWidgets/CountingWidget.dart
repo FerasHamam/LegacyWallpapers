@@ -28,12 +28,13 @@ class CountingWidget extends StatelessWidget {
         child: AutoSizeText(
           '$count Wallpapers',
           maxLines: 1,
+          maxFontSize: 60,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'Hero',
             fontWeight: FontWeight.bold,
-            fontSize: 60.sp,
+            fontSize: 62.sp,
           ),
         ));
   }

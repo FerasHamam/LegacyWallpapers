@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 //widgets
 import '../widgets/ImagePreviewWidgets/wallpaperFunctions.dart';
@@ -54,11 +55,11 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
               child: Container(
                 height: deviceSize.height,
                 width: deviceSize.width,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(url!),
-                  ),
+                child: CachedNetworkImage(
+                  imageUrl: url,
+                  placeholder: (ctx, _) => Container(
+                      child: Center(child: CircularProgressIndicator())),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

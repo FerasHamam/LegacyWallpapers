@@ -74,6 +74,7 @@ flutter:
     - lib/assets/images/animal.jpg
     - lib/assets/images/initial.jpg
     - lib/assets/images/graffiti.jpg
+    - lib/assets/images/icon.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
