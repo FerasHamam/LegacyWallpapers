@@ -30,12 +30,6 @@ class _TypesScreenState extends State<TypesScreen>
   }
 
   @override
-  void didUpdateWidget(TypesScreen oldWidget) {
-    _controller.forward();
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -60,8 +54,8 @@ class _TypesScreenState extends State<TypesScreen>
             pickedColor[provider.currentIndex]['2']!
           ];
           return AnimatedContainer(
-            duration: const Duration(milliseconds: 80),
-            curve: Curves.easeInExpo,
+            duration: const Duration(milliseconds: 250),
+            curve: Curves.linear,
             height: deviceSize.height,
             decoration: BoxDecoration(
               gradient: LinearGradient(

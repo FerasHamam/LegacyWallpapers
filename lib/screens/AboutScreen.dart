@@ -11,10 +11,12 @@ class AboutScreen extends StatelessWidget {
         height: deviceSize.height,
         width: deviceSize.width,
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomLeft,
-                colors: [Colors.cyan, Colors.teal])),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomLeft,
+            colors: [Color(0xff2CEEF0), Color(0xff0476D0)],
+          ),
+        ),
         child: Column(
           children: [
             SizedBox(
@@ -27,7 +29,7 @@ class AboutScreen extends StatelessWidget {
                 child: Image.asset('lib/assets/images/icon.jpg')),
             Divider(
               thickness: deviceSize.width * 0.005,
-              color: Color(0xffB77CFC),
+              color: Color(0xff007575),
             ),
             SizedBox(
               height: deviceSize.height * 0.02,
@@ -42,9 +44,7 @@ class AboutScreen extends StatelessWidget {
             Container(
               width: 100,
               child: Divider(
-                thickness: deviceSize.width * 0.005,
-                color: Color(0x99B77CFC),
-              ),
+                  thickness: deviceSize.width * 0.005, color: Colors.white54),
             ),
             Container(
               margin: EdgeInsets.all(deviceSize.height * 0.025),
@@ -81,7 +81,7 @@ class AboutScreen extends StatelessWidget {
               width: 100,
               child: Divider(
                 thickness: deviceSize.width * 0.005,
-                color: Color(0x99B77CFC),
+                color: Colors.white54,
               ),
             ),
             Container(

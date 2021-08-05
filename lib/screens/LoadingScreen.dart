@@ -56,8 +56,8 @@ class _LoadingScreenState extends State<LoadingScreen>
             opacity: _animOpacity,
             child: Container(
               margin: MediaQuery.of(context).viewInsets,
-              width: 500.w,
-              height: 500.h,
+              width: 300.w,
+              height: 300.h,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('lib/assets/images/icon.jpg'),
