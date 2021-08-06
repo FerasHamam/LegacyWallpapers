@@ -11,6 +11,7 @@
     Legacy is a simple way to find suitable FHD wallpaper for your phone!
   </p>
 </p>
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
