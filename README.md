@@ -8,7 +8,7 @@
   <h3 align="center">Legacy</h3>
 
   <p align="center">
-    Legacy is a simple way to find suitable FHD wallpaper for your phone!
+    Legacy is a simple way to find distinguish wallpapers for your phone!
   </p>
 </p>
 
@@ -53,12 +53,12 @@
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-<p> You can do the following to the wallpapers: </p>
+<p>Application functionality:</p>
 <ul>
-  <li>Set as Home Screen</li>
-  <li>Set as Lock Screen</li>
-  <li>Set to both Home and Lock Screens</li>
-  <li>Download the image</li>
+  <li>Set wallpapers as Home Screen</li>
+  <li>Set wallpapers as Lock Screen</li>
+  <li>Set wallpapers to both Home and Lock Screens</li>
+  <li>Download wallpapers</li>
 </ul>
 
 
@@ -67,7 +67,7 @@
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
