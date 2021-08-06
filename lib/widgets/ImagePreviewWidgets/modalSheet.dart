@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:auto_size_text/auto_size_text.dart';
 
 void showMoadl(
   BuildContext context,
@@ -11,7 +13,7 @@ void showMoadl(
       context: context,
       builder: (ctx) {
         TextStyle styleForModal =
-            TextStyle(fontSize: deviceSize.width * 0.06, color: Colors.white);
+            TextStyle(fontSize: 55.sp, color: Colors.white);
         return Container(
           color: Colors.transparent,
           padding: EdgeInsets.symmetric(
@@ -44,8 +46,10 @@ void showMoadl(
                     Icons.home_work_rounded,
                     color: Colors.white,
                   ),
-                  label: Text(
+                  label: AutoSizeText(
                     'Home Screen',
+                    maxLines: 1,
+                    maxFontSize: 20,
                     style: styleForModal,
                     textAlign: TextAlign.center,
                   ),
@@ -54,7 +58,7 @@ void showMoadl(
                   padding:
                       EdgeInsets.symmetric(horizontal: deviceSize.width * 0.2),
                   child: Divider(
-                    color: Colors.white,
+                    color: Colors.white54,
                     thickness: 2,
                   ),
                 ),
@@ -64,11 +68,13 @@ void showMoadl(
                     setWallpaper('lock');
                   },
                   icon: Icon(
-                    Icons.lock,
+                    Icons.lock_rounded,
                     color: Colors.white,
                   ),
-                  label: Text(
+                  label: AutoSizeText(
                     'Lock Screen',
+                    maxLines: 1,
+                    maxFontSize: 20,
                     style: styleForModal,
                     textAlign: TextAlign.center,
                   ),
@@ -77,7 +83,7 @@ void showMoadl(
                   padding:
                       EdgeInsets.symmetric(horizontal: deviceSize.width * 0.2),
                   child: Divider(
-                    color: Colors.white,
+                    color: Colors.white54,
                     thickness: 2,
                   ),
                 ),
@@ -86,10 +92,28 @@ void showMoadl(
                     Navigator.of(context).pop();
                     setWallpaper('both');
                   },
-                  child: Text(
-                    'Both',
-                    style: TextStyle(fontSize: 76.sp, color: Colors.white),
-                    textAlign: TextAlign.center,
+                  child: Container(
+                    width: deviceSize.width * 0.4,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.home_work_rounded,
+                          color: Colors.white,
+                        ),
+                        Icon(Icons.lock_rounded, color: Colors.white),
+                        SizedBox(
+                          width: deviceSize.width * 0.02,
+                        ),
+                        AutoSizeText(
+                          'Both',
+                          maxLines: 1,
+                          maxFontSize: 20,
+                          style: styleForModal,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Padding(
@@ -97,7 +121,7 @@ void showMoadl(
                       horizontal: deviceSize.width * 0.2,
                       vertical: deviceSize.height * 0.001),
                   child: Divider(
-                    color: Colors.white,
+                    color: Colors.white54,
                     thickness: 2,
                   ),
                 ),

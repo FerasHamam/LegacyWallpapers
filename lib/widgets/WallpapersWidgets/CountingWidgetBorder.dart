@@ -22,7 +22,7 @@ class CountingWidgetBorder extends StatelessWidget {
       child: AutoSizeText(
         '$count Wallpapers',
         maxLines: 1,
-        maxFontSize: 65,
+        maxFontSize: 18,
         style: TextStyle(
             color: Colors.white,
             fontFamily: 'Hero',

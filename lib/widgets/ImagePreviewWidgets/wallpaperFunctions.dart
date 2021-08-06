@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:legacywallpapers/providers/wallpapers.dart';
 import './modalSheet.dart';
 import 'package:provider/provider.dart';
@@ -166,12 +169,13 @@ class _FunctionsWidgetState extends State<FunctionsWidget>
                             color: Colors.white,
                             size: widget.deviceSize.width * 0.1,
                           ),
-                          label: Text(
+                          label: AutoSizeText(
                             "Set As",
+                            maxLines: 1,
+                            maxFontSize: 22,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: widget.deviceSize.width * 0.055),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 60.sp),
                           ),
                         ),
                       ),

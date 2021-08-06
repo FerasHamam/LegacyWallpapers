@@ -25,11 +25,11 @@ class AboutScreen extends StatelessWidget {
             Container(
                 alignment: Alignment.center,
                 height: 150.sp,
-                width: 250.sp,
+                width: 200.sp,
                 child: Image.asset('lib/assets/images/icon.jpg')),
             Divider(
               thickness: deviceSize.width * 0.005,
-              color: Color(0xff007575),
+              color: Colors.white54,
             ),
             SizedBox(
               height: deviceSize.height * 0.02,
@@ -38,7 +38,7 @@ class AboutScreen extends StatelessWidget {
               'ABOUT',
               style: TextStyle(
                   fontFamily: 'Infinity',
-                  fontSize: deviceSize.height * 0.065,
+                  fontSize: deviceSize.height * 0.05,
                   fontWeight: FontWeight.w600),
             ),
             Container(
@@ -50,11 +50,11 @@ class AboutScreen extends StatelessWidget {
               margin: EdgeInsets.all(deviceSize.height * 0.025),
               width: deviceSize.width,
               child: Text(
-                '1- All images are provided by Pixaby !',
+                '1- All images are provided by Pixabay !',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     fontFamily: 'Hero',
-                    fontSize: deviceSize.height * 0.025,
+                    fontSize: deviceSize.height * 0.02,
                     fontWeight: FontWeight.w500),
               ),
             ),
@@ -66,7 +66,7 @@ class AboutScreen extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     fontFamily: 'Hero',
-                    fontSize: deviceSize.height * 0.025,
+                    fontSize: deviceSize.height * 0.02,
                     fontWeight: FontWeight.w500),
               ),
             ),
@@ -74,7 +74,7 @@ class AboutScreen extends StatelessWidget {
               'Contact',
               style: TextStyle(
                   fontFamily: 'Infinity',
-                  fontSize: deviceSize.height * 0.065,
+                  fontSize: deviceSize.height * 0.05,
                   fontWeight: FontWeight.w600),
             ),
             Container(
@@ -92,7 +92,7 @@ class AboutScreen extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     fontFamily: 'Hero',
-                    fontSize: deviceSize.height * 0.03,
+                    fontSize: deviceSize.height * 0.02,
                     fontWeight: FontWeight.w500),
               ),
             ),
