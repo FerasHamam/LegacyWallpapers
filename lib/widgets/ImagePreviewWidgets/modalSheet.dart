@@ -13,7 +13,7 @@ void showMoadl(
       context: context,
       builder: (ctx) {
         TextStyle styleForModal =
-            TextStyle(fontSize: 55.sp, color: Colors.white);
+            TextStyle(fontSize: 75.sp, color: Colors.white);
         return Container(
           color: Colors.transparent,
           padding: EdgeInsets.symmetric(
@@ -107,6 +107,7 @@ void showMoadl(
                         ),
                         AutoSizeText(
                           'Both',
+                          softWrap: true,
                           maxLines: 1,
                           maxFontSize: 20,
                           style: styleForModal,

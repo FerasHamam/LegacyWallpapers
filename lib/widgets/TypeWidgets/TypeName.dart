@@ -63,7 +63,7 @@ class _AnimatedTextState extends State<AnimatedText>
             child: AutoSizeText(
               widget.text.toUpperCase(),
               maxLines: 1,
-              maxFontSize: 60,
+              maxFontSize: 74,
               key: GlobalKey(),
               style: TextStyle(
                   fontSize: 300.sp,
