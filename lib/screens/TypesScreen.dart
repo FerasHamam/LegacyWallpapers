@@ -54,7 +54,7 @@ class _TypesScreenState extends State<TypesScreen>
             pickedColor[provider.currentIndex]['2']!
           ];
           return AnimatedContainer(
-            duration: const Duration(milliseconds: 250),
+            duration: const Duration(milliseconds: 125),
             curve: Curves.linear,
             height: deviceSize.height,
             decoration: BoxDecoration(

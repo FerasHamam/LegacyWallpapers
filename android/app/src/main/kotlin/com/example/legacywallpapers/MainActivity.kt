@@ -1,4 +1,4 @@
-package com.example.legacywallpapers
+package com.legacywallpapers.android
 
 import io.flutter.embedding.android.FlutterActivity
 
