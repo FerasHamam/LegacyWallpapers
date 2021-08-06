@@ -11,6 +11,7 @@ class Wallpapers with ChangeNotifier {
   List<Map<String, String>> _types = [
     {'abstract': 'abstract wallpapers'},
     {'graffiti': 'graffiti and street art'},
+    {'space': 'space wallpapers'},
     {'ocean': 'ocean wallpapers'},
     {'city': 'city wallpapers'},
     {'forest': 'forest wallpapers'},
@@ -18,7 +19,6 @@ class Wallpapers with ChangeNotifier {
     {'fantasy': 'fantasy'},
     {'animal': 'animals jungle'},
     {'car': 'racing car'},
-    {'space': 'space wallpapers'},
   ];
 
   List<Map<String, String>> get types {

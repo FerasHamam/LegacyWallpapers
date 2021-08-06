@@ -13,7 +13,7 @@ void showMoadl(
       context: context,
       builder: (ctx) {
         TextStyle styleForModal =
-            TextStyle(fontSize: 75.sp, color: Colors.white);
+            TextStyle(fontSize: 100.sp, color: Colors.white);
         return Container(
           color: Colors.transparent,
           padding: EdgeInsets.symmetric(
