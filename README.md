@@ -8,7 +8,7 @@
   <h3 align="center">Legacy</h3>
 
   <p align="center">
-    Legacy is a simple way to discover distinguish wallpapers for your phone!
+    Legacy is a simple way to discover astonishing wallpapers for your phone!
   </p>
 </p>
 
