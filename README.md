@@ -81,4 +81,4 @@ Contributions are what make the open source community such an amazing place to l
 
 [@hamam_feras](https://twitter.com/hamam_feras) - feras.i.hamam@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/FerasHamam/LegacyWallpapers)
+Project Link: [https://github.com/FerasHamam/LegacyWallpapers](https://github.com/FerasHamam/LegacyWallpapers)
