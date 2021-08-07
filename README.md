@@ -25,6 +25,7 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
+	<li><a href="#Important">Important</a></li>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
@@ -103,4 +104,4 @@ You can use my application as a reference for design but you cannot use it for c
 
 Project Link: [https://github.com/FerasHamam/LegacyWallpapers](https://github.com/FerasHamam/LegacyWallpapers)
 
-PlayStore link: [Soon]()
+Playstore link: [Soon]()
