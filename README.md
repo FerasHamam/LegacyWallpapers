@@ -52,17 +52,15 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-###Important
+### Important
 
 You can use my application as a reference for design but you cannot use it for commercial use.
 
 
 ### Prerequisites
 
-<ul>
-<li>[Flutter installed](https://flutter.dev/docs/get-started/install)</li>
-<li>[Pixabay API key](https://pixabay.com/service/about/api/)</li>
-</ul>
+* [Flutter installed](https://flutter.dev/docs/get-started/install)
+* [Pixabay API key](https://pixabay.com/service/about/api/)
 
 
 ### Installation
