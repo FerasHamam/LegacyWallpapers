@@ -172,10 +172,10 @@ class _FunctionsWidgetState extends State<FunctionsWidget>
                           label: AutoSizeText(
                             "Set As",
                             maxLines: 1,
-                            maxFontSize: 23,
+                            maxFontSize: 18,
                             textAlign: TextAlign.center,
                             style:
-                                TextStyle(color: Colors.white, fontSize: 70.sp),
+                                TextStyle(color: Colors.white, fontSize: 80.sp),
                           ),
                         ),
                       ),

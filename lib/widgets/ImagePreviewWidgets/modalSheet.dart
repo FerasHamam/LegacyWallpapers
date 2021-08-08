@@ -49,7 +49,7 @@ void showMoadl(
                   label: AutoSizeText(
                     'Home Screen',
                     maxLines: 1,
-                    maxFontSize: 20,
+                    maxFontSize: 18,
                     style: styleForModal,
                     textAlign: TextAlign.center,
                   ),
@@ -74,7 +74,7 @@ void showMoadl(
                   label: AutoSizeText(
                     'Lock Screen',
                     maxLines: 1,
-                    maxFontSize: 20,
+                    maxFontSize: 18,
                     style: styleForModal,
                     textAlign: TextAlign.center,
                   ),
@@ -109,7 +109,7 @@ void showMoadl(
                           'Both',
                           softWrap: true,
                           maxLines: 1,
-                          maxFontSize: 20,
+                          maxFontSize: 18,
                           style: styleForModal,
                           textAlign: TextAlign.center,
                         ),
