@@ -107,4 +107,4 @@ You can use my application as a reference for design but you cannot use it for c
 
 Project Link: [https://github.com/FerasHamam/LegacyWallpapers](https://github.com/FerasHamam/LegacyWallpapers)
 
-Playstore link: [Soon]()
+Playstore link: [Legacy Wallpapers](https://play.google.com/store/apps/details?id=com.legacywallpapers.android)
