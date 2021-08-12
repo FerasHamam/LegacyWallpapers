@@ -27,11 +27,11 @@ class _AnimatedTextState extends State<AnimatedText>
       duration: const Duration(milliseconds: 100),
     );
     _animOpacity = Tween<double>(begin: 0, end: 0.8).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOutCirc),
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOutQuad),
     );
     _animPosition = Tween<Offset>(begin: Offset(0, -0.2), end: Offset.zero)
         .animate(
-            CurvedAnimation(parent: _controller, curve: Curves.easeInOutCirc));
+            CurvedAnimation(parent: _controller, curve: Curves.easeInOutQuad));
     _controller.forward();
     super.initState();
   }
@@ -39,6 +39,7 @@ class _AnimatedTextState extends State<AnimatedText>
   @override
   void dispose() {
     _controller.dispose();
+
     super.dispose();
   }
 
@@ -63,10 +64,10 @@ class _AnimatedTextState extends State<AnimatedText>
             child: AutoSizeText(
               widget.text.toUpperCase(),
               maxLines: 1,
-              maxFontSize: 74,
+              maxFontSize: 72,
               key: GlobalKey(),
               style: TextStyle(
-                  fontSize: 300.sp,
+                  fontSize: 250.sp,
                   color: Colors.white,
                   fontWeight: FontWeight.w800),
             ),

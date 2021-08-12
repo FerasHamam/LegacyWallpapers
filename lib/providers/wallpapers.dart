@@ -130,7 +130,7 @@ class Wallpapers with ChangeNotifier {
             String lookingFor = type.values.first;
             final response = await http.get(
               Uri.parse(
-                'https://pixabay.com/api/?key=YourKey&$lookingFor&orientation=vertical&per_page=20&min_width=1019&min_height=1080',
+                'https://pixabay.com/api/?key=22575208-3109e2dc674cc85adb78b73af&q=$lookingFor&orientation=vertical&per_page=20&min_width=1019&min_height=1080',
               ),
             );
             final result = jsonDecode(response.body);

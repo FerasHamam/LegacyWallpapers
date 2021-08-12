@@ -39,7 +39,6 @@ class _TypesScreenState extends State<TypesScreen>
   Widget build(BuildContext context) {
     final walls = Provider.of<Wallpapers>(context, listen: false).walls;
     bool reload = true;
-    print(walls.length);
     if (walls.length > 0) {
       setState(() {
         reload = false;

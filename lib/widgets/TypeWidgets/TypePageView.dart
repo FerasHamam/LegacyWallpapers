@@ -25,15 +25,20 @@ class TypePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //initial values
-    final PreloadPageController _controller =
-        PreloadPageController(keepPage: true);
+    final PageController _controller = PageController(
+      viewportFraction: 0.82,
+      keepPage: true,
+    );
     final types = Provider.of<Wallpapers>(context, listen: false).types;
     //
-    return PreloadPageView(
-      preloadPagesCount: 5,
+    return PageView.builder(
+      itemBuilder: (ctx, index) {
+        return TypeCard(types[index].keys.first, reload);
+      },
       controller: _controller,
+      // preloadPagesCount: 4,
       scrollDirection: Axis.horizontal,
-      children: companyCardWidget(types),
+      // children: companyCardWidget(types),
       physics: BouncingScrollPhysics(),
       onPageChanged: (index) {
         Provider.of<Wallpapers>(context, listen: false).setIndex(index);

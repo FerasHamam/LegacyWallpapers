@@ -12,7 +12,6 @@ class TypeCard extends StatelessWidget {
   final String name;
   final reload;
   TypeCard(this.name, this.reload);
-
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
@@ -56,7 +55,7 @@ class TypeCard extends StatelessWidget {
           ],
         ),
         margin: EdgeInsets.only(
-            top: 100.sp, right: 125.sp, left: 125.sp, bottom: 50.sp),
+            top: 100.sp, right: 40.sp, left: 40.sp, bottom: 60.sp),
       ),
     );
   }
